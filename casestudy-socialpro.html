@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<title>Asim — SocialPro Reporting Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Acorn';
+    src: url('fonts/acorn-7.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --paper: #F5EFE4;
+    --paper-2: #EDE5D2;
+    --sand: #E8DFCB;
+    --ink: #1A1A1A;
+    --ink-2: #2C2C2A;
+    --ink-3: #444441;
+    --muted: #5F5E5A;
+    --hint: #888780;
+    --signal: #FF5B1F;
+    --signal-deep: #C2421A;
+    --deep: #2D5F4F;
+    --serif: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif; --hero: 'Acorn', 'Georgia', serif;
+    --sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--signal); color: #fff; }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* NAV */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    background: rgba(245, 239, 228, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(26,26,26,0.08);
+  }
+  nav.top .logo {
+    font-family: var(--hero);
+    font-size: 22px;
+    font-style: normal;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  nav.top .logo .star { color: var(--signal); font-style: normal; }
+  nav.top .back {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  nav.top .back:hover { color: var(--signal); }
+
+  /* CASE STUDY HERO */
+  .cs-hero {
+    padding: 160px 32px 80px;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .cs-back {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--hint);
+    margin-bottom: 48px;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  .cs-back:hover { color: var(--signal); }
+  .cs-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+  }
+  .cs-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .cs-meta span::before { content: '◆'; color: var(--signal); font-size: 7px; }
+  .cs-title {
+    font-family: var(--hero);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .cs-title em { font-style: italic; color: var(--signal); }
+  .cs-lede {
+    font-size: 19px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  /* OUTCOME BAND */
+  .cs-outcome {
+    background: var(--ink);
+    padding: 56px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cs-outcome-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .outcome-stat { text-align: center; }
+  .outcome-num {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--signal);
+    line-height: 1;
+  }
+  .outcome-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(245,239,228,0.5);
+    letter-spacing: 0.04em;
+    margin-top: 8px;
+  }
+  @media (max-width: 600px) {
+    .cs-outcome-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* CASE STUDY BODY */
+  .cs-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cs-section { margin-bottom: 72px; }
+  .cs-section:last-child { margin-bottom: 0; }
+  .cs-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 16px;
+  }
+  .cs-heading {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .cs-text {
+    font-size: 17px;
+    color: var(--ink-3);
+    line-height: 1.7;
+  }
+  .cs-text p + p { margin-top: 16px; }
+  .cs-text strong { color: var(--ink); font-weight: 500; }
+
+  /* CALLOUT */
+  .cs-callout {
+    background: var(--paper-2);
+    border-left: 3px solid var(--signal);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .cs-callout p {
+    font-size: 15px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+  .cs-callout .source {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--hint);
+    margin-top: 10px;
+  }
+
+  /* DETAIL CARDS */
+  .cs-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .cs-detail-card {
+    padding: 24px;
+    border: 1px solid rgba(26,26,26,0.08);
+    border-radius: 10px;
+    background: var(--paper);
+  }
+  .cs-detail-card h4 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .cs-detail-card p {
+    font-size: 14px;
+    color: var(--ink-3);
+    line-height: 1.55;
+  }
+  @media (max-width: 600px) {
+    .cs-detail-grid { grid-template-columns: 1fr; }
+  }
+
+  /* DECISION BOX */
+  .cs-decision {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin: 28px 0;
+  }
+  .cs-decision .decision-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 10px;
+  }
+  .cs-decision p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(245,239,228,0.85);
+  }
+
+  /* TESTIMONIAL */
+  .cs-testimonial {
+    background: var(--paper-2);
+    padding: 48px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cs-testimonial-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cs-testimonial blockquote {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .cs-testimonial cite {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  /* NEXT PROJECT */
+  .cs-next {
+    background: var(--ink);
+    padding: 64px 32px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .cs-next-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(245,239,228,0.4);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .cs-next-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--paper);
+    transition: color 0.3s;
+  }
+  .cs-next a:hover .cs-next-title { color: var(--signal); }
+  .cs-next-arrow {
+    font-size: 20px;
+    color: var(--signal);
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cs-visual { position: relative; z-index: 2; background: var(--paper-2); padding: 40px 48px; max-width: 1280px; margin: 0 auto; }
+  .cs-visual img { width: 100%; display: block; border-radius: 12px; object-fit: cover; object-position: top; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .cs-sketch { margin: 32px -80px; border-radius: 12px; overflow: hidden; background: #fff; padding: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border: 1px solid rgba(26,26,26,0.06); display: flex; flex-direction: column; align-items: center; }
+  .cs-sketch img { max-width: 100%; display: block; border-radius: 8px; }
+  .cs-sketch figcaption { font-family: var(--mono); font-size: 11px; color: var(--hint); letter-spacing: 0.04em; margin-top: 12px; text-align: center; }
+  @media (max-width: 900px) { .cs-sketch { margin: 32px 0; } }
+  .cs-screen { margin: 28px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(29,51,46,0.6); }
+  .cs-screen img { width: 100%; display: block; }
+  .cs-screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .cs-screen-grid .cs-screen { margin: 0; }
+
+  /* DESIGN HIGHLIGHTS — side-by-side rows */
+  .cs-highlights {
+    position: relative;
+    z-index: 2;
+    background: #1D332E;
+    padding: 80px 32px;
+  }
+  .cs-highlights-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cs-highlights-header {
+    max-width: 860px;
+    margin: 0 auto 56px;
+  }
+  .cs-highlights-header .cs-label { color: var(--signal); }
+  .cs-highlights-header .cs-heading { color: var(--paper); }
+  .cs-highlights-header p.cs-highlights-intro {
+    font-size: 16px;
+    color: rgba(245,239,228,0.7);
+    line-height: 1.6;
+    margin-top: 12px;
+    max-width: 640px;
+  }
+  .cs-highlight-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+  .cs-highlight-row:last-child { margin-bottom: 0; }
+  .cs-highlight-row.reverse { direction: rtl; }
+  .cs-highlight-row.reverse > * { direction: ltr; }
+  .cs-highlight-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .cs-highlight-img img {
+    width: 100%;
+    display: block;
+  }
+  .cs-highlight-text h3 {
+    font-family: var(--serif);
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 12px;
+  }
+  .cs-highlight-text h3 span {
+    color: var(--signal);
+  }
+  .cs-highlight-text p {
+    font-size: 15px;
+    color: rgba(245,239,228,0.65);
+    line-height: 1.65;
+  }
+  .cs-highlight-text .cs-highlight-stat {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--signal);
+    margin-top: 16px;
+    letter-spacing: 0.02em;
+  }
+  .cs-highlight-sub {
+    margin-top: 48px;
+  }
+  .cs-highlight-sub h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+  .cs-highlight-sub p {
+    font-size: 14px;
+    color: rgba(245,239,228,0.55);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .cs-highlight-sub p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 768px) {
+    .cs-hero { padding: 120px 20px 60px; }
+    .cs-body { padding: 60px 20px; }
+    nav.top { padding: 14px 20px; }
+    .cs-screen-grid { grid-template-columns: 1fr; }
+    .cs-highlights { padding: 56px 20px; }
+    .cs-highlight-row { grid-template-columns: 1fr; gap: 24px; }
+    .cs-highlight-row.reverse { direction: ltr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="index.html" class="logo">Asim<span class="star">*</span></a>
+  <a href="index.html#work" class="back">← Back to work</a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-meta">
+    <span>SocialPro</span>
+    <span>Product Designer</span>
+    <span>2023—2024</span>
+    <span>SaaS · Enterprise</span>
+  </div>
+  <h1 class="cs-title">Contractors managing $10B+ in projects were filing reports <em>by hand</em>.</h1>
+  <p class="cs-lede">SocialPro is a cloud platform that helps construction companies track social procurement compliance. The reporting tools were cluttered and slow — I redesigned them. Submissions went up 22%.</p>
+</div>
+
+<div class="cs-outcome">
+  <div class="cs-outcome-inner">
+    <div class="outcome-stat">
+      <div class="outcome-num">+22%</div>
+      <div class="outcome-label">report submissions</div>
+    </div>
+    <div class="outcome-stat">
+      <div class="outcome-num">−30%</div>
+      <div class="outcome-label">submission time</div>
+    </div>
+    <div class="outcome-stat">
+      <div class="outcome-num">175+</div>
+      <div class="outcome-label">companies on platform</div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-visual">
+  <img src="images/socialpro-reporting.avif" alt="SocialPro reporting dashboard — compliance tracking and workforce data">
+</div>
+
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <p class="cs-label">The Problem</p>
+    <h2 class="cs-heading">Three user groups, one broken workflow</h2>
+    <div class="cs-text">
+      <p>Contractors found reporting cluttered and time-consuming. Subcontractors felt overwhelmed during onboarding. Compliance officers lacked real-time visibility. The friction was <strong>costing the platform adoption</strong>.</p>
+    </div>
+    <div class="cs-callout">
+      <p>"I spend more time figuring out where to enter data than actually entering it."</p>
+      <p class="source">— Contractor, user interview</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Research</p>
+    <h2 class="cs-heading">What I heard in interviews surprised me</h2>
+    <div class="cs-text">
+      <p>Most contractors don't batch reports monthly — they <strong>enter data weekly in small increments</strong>. The original form was designed for bulk entry. That mismatch was the root of most frustration.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Process</p>
+    <h2 class="cs-heading">Sketches first, pixels later</h2>
+    <div class="cs-text">
+      <p>Hand-drawn sketches and low-fidelity wireframes went to stakeholders weekly — catching usability issues <strong>before they got expensive</strong>.</p>
+    </div>
+    <figure class="cs-sketch reveal">
+      <img src="images/socialpro-sketches.png" alt="Hand-drawn wireframe sketches of the SocialPro dashboard, forecasting module, and project reports — early explorations mapping layout and data hierarchy">
+      <figcaption>Early wireframe sketches — dashboard, forecasting, and reporting views mapped out before opening Figma</figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Design Solutions</p>
+    <h2 class="cs-heading">Four modules, each solving a real pain point</h2>
+
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>Project Dashboard</h4>
+        <p>A control center surfacing workforce, spend, and local content metrics at a glance — so contractors stop digging through nested pages for basic numbers.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Labour Hours</h4>
+        <p>Now managed through interactive tables inline. No more switching between separate forms. Enter hours, review, submit — all in one flow.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Social Spend</h4>
+        <p>A guided form: search suppliers by ABN, select certifications, enter invoice details, upload documents. Entries appear in a reviewable table with filter, edit, and remove.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Local Content</h4>
+        <p>A simplified interface for adding and managing local content items. Side panel for quick selection — allocate contract values, assign suppliers, track targets in one place.</p>
+      </div>
+    </div>
+
+    <div class="cs-screen-grid reveal">
+      <div class="cs-screen">
+        <img src="images/socialpro-reports-2.png" alt="SocialPro reporting module — workforce data table">
+      </div>
+      <div class="cs-screen">
+        <img src="images/socialpro-reports-3.png" alt="SocialPro reporting module — social spend tracking">
+      </div>
+    </div>
+
+    <div class="cs-decision">
+      <p class="decision-label">Hard Decision</p>
+      <p>We debated building a bulk upload feature for large contractors. But interviews showed 80% of users enter data weekly, not monthly. So we optimized for frequent small submissions instead of rare large ones. The result: a lighter interface that matched actual behavior.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Mapping the User Journey</p>
+    <h2 class="cs-heading">Visualising the end-to-end experience exposed hidden friction</h2>
+    <div class="cs-text">
+      <p>Journey maps across all three user groups revealed critical touchpoints — moments of confusion, redundant steps, and dead ends that <strong>weren't visible from the interface alone</strong>.</p>
+    </div>
+
+    <div class="cs-screen reveal">
+      <img src="images/sp-journey-map.png" alt="SocialPro user journey map — end-to-end reporting workflow">
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-highlights reveal">
+  <div class="cs-highlights-inner">
+    <div class="cs-highlights-header">
+      <p class="cs-label">Design Highlights</p>
+      <h2 class="cs-heading">Key screens from the redesign</h2>
+      <p class="cs-highlights-intro">High-fidelity designs built on low-fidelity feedback — balancing visual hierarchy with functionality to keep complex data accessible and actionable.</p>
+    </div>
+
+    <div class="cs-highlight-row">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-dashboard.png" alt="SocialPro project dashboard — metrics overview">
+      </div>
+      <div class="cs-highlight-text">
+        <h3><span>1.</span> Project Dashboard</h3>
+        <p>A comprehensive control center displaying key metrics including workforce, spend, and local content — so contractors stop digging through nested pages for basic numbers.</p>
+      </div>
+    </div>
+
+    <div class="cs-highlight-row reverse">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-forecasting.png" alt="SocialPro forecasting module">
+      </div>
+      <div class="cs-highlight-text">
+        <h3><span>2.</span> Forecasting</h3>
+        <p>Enables users to project targets and track metrics like labour hours, spend, and local content in real time. Compliance officers get the visibility they need; contractors can course-correct before deadlines, not after.</p>
+      </div>
+    </div>
+
+    <div class="cs-highlight-row">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-reports.png" alt="SocialPro monthly reports">
+      </div>
+      <div class="cs-highlight-text">
+        <h3><span>3.</span> Project Reporting</h3>
+        <p>I redesigned the Project Reporting module, enabling users to forecast targets and monitor labour hours, spend, and local content metrics in real time — making reporting faster and more transparent.</p>
+        <p class="cs-highlight-stat">22% increase in report submissions across the platform</p>
+
+        <div class="cs-highlight-sub">
+          <h4>Labour Hours</h4>
+          <p>Interactive tables enable direct labour hour management inline — streamlining submission and eliminating the need for separate forms.</p>
+
+          <h4>Social Spend</h4>
+          <p>A structured, guided form interface that minimises data entry confusion. Users search suppliers via ABN, select certifications, enter invoice details, and upload documents centrally.</p>
+
+          <h4>Local Content</h4>
+          <p>Simplified interface for managing local content items. Users allocate contract values, assign suppliers, and monitor target progress in one place. Side panel enables rapid item selection.</p>
+
+          <h4>Report Confirmation</h4>
+          <p>Users finalise submissions by reviewing a summary and confirming agreement to terms — a clean handoff that reduces errors and builds audit confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-highlight-row reverse">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-labour.png" alt="SocialPro labour hours module">
+      </div>
+      <div class="cs-highlight-text">
+        <h3>Labour Hours</h3>
+        <p>Interactive tables enable direct labour hour management, streamlining submission and eliminating separate form requirements. Enter hours, review, submit — all in one flow.</p>
+      </div>
+    </div>
+
+    <div class="cs-highlight-row">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-spend.png" alt="SocialPro social spend module">
+      </div>
+      <div class="cs-highlight-text">
+        <h3>Social Spend</h3>
+        <p>Structured, guided form interface that minimises data entry confusion. Users search suppliers via ABN, select certifications, enter invoice details, and upload documents centrally. Entries appear in reviewable tables with filter, edit, and remove capabilities.</p>
+      </div>
+    </div>
+
+    <div class="cs-highlight-row reverse">
+      <div class="cs-highlight-img">
+        <img src="images/sp-highlight-local.png" alt="SocialPro local content module">
+      </div>
+      <div class="cs-highlight-text">
+        <h3>Local Content</h3>
+        <p>Simplified interface for managing local content items. Side panel enables rapid item selection — allocate contract values, assign suppliers, and monitor target progress in one place.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <p class="cs-label">Impact</p>
+    <h2 class="cs-heading">The numbers tell the story</h2>
+    <div class="cs-text">
+      <p><strong>30% decrease in submission time</strong>, <strong>22% increase in report submissions</strong>, and adoption across <strong>175+ companies</strong> managing <strong>$10B+ in projects</strong>.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-testimonial">
+  <div class="cs-testimonial-inner reveal">
+    <blockquote>"SocialPro has transformed the process, ensuring clarity, efficiency, and seamless collaboration across all our projects. Their intuitive platform streamlines reporting, enabling better decision-making and improved outcomes at every stage."</blockquote>
+    <cite><strong>Ana Buljubasic</strong> · Contracts Administrator, Stilcon</cite>
+  </div>
+</div>
+
+<div class="cs-next">
+  <p class="cs-next-label">Next project</p>
+  <a href="casestudy-saveingold.html">
+    <p class="cs-next-title">SaveInGold — Gold Trading App →</p>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+  })();
+</script>
+
+</body>
+</html>

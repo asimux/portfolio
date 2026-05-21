@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<title>Asim — SocialPro Website Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Acorn';
+    src: url('fonts/acorn-7.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --paper: #F5EFE4; --paper-2: #EDE5D2; --ink: #1A1A1A; --ink-2: #2C2C2A; --ink-3: #444441;
+    --muted: #5F5E5A; --hint: #888780; --signal: #FF5B1F; --deep: #2D5F4F;
+    --serif: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif; --hero: 'Acorn', 'Georgia', serif;
+    --sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--signal); color: #fff; }
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  nav.top { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 12px; color: var(--ink-2); background: rgba(245,239,228,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(26,26,26,0.08); }
+  nav.top .logo { font-family: var(--hero); font-size: 22px; font-style: normal; color: var(--ink); letter-spacing: -0.02em; }
+  nav.top .logo .star { color: var(--signal); font-style: normal; }
+  nav.top .back { font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; transition: color 0.2s; }
+  nav.top .back:hover { color: var(--signal); }
+
+  .cs-hero { padding: 160px 32px 80px; max-width: 860px; margin: 0 auto; position: relative; z-index: 2; }
+  .cs-meta { display: flex; gap: 24px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 32px; }
+  .cs-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .cs-meta span::before { content: '◆'; color: var(--signal); font-size: 7px; }
+  .cs-title { font-family: var(--hero); font-size: clamp(36px,5vw,56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 20px; }
+  .cs-title em { font-style: italic; color: var(--signal); }
+  .cs-lede { font-size: 19px; color: var(--ink-3); line-height: 1.6; max-width: 640px; margin-bottom: 48px; }
+
+  .cs-outcome { background: var(--ink); padding: 56px 32px; position: relative; z-index: 2; }
+  .cs-outcome-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+  .outcome-stat { text-align: center; }
+  .outcome-num { font-family: var(--serif); font-size: clamp(32px,4vw,48px); font-weight: 400; color: var(--signal); line-height: 1; }
+  .outcome-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.5); letter-spacing: 0.04em; margin-top: 8px; }
+  @media (max-width: 600px) { .cs-outcome-inner { grid-template-columns: 1fr; gap: 28px; } }
+
+  .cs-body { max-width: 860px; margin: 0 auto; padding: 80px 32px; position: relative; z-index: 2; }
+  .cs-section { margin-bottom: 72px; }
+  .cs-section:last-child { margin-bottom: 0; }
+  .cs-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 16px; }
+  .cs-heading { font-family: var(--serif); font-size: clamp(26px,3vw,36px); font-weight: 400; font-style: italic; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
+  .cs-text { font-size: 17px; color: var(--ink-3); line-height: 1.7; }
+  .cs-text p + p { margin-top: 16px; }
+  .cs-text strong { color: var(--ink); font-weight: 500; }
+
+  .cs-callout { background: var(--paper-2); border-left: 3px solid var(--signal); padding: 24px 28px; margin: 28px 0; border-radius: 0 8px 8px 0; }
+  .cs-callout p { font-size: 15px; color: var(--ink-3); line-height: 1.6; }
+  .cs-callout .source { font-family: var(--mono); font-size: 11px; color: var(--hint); margin-top: 10px; }
+
+  .cs-detail-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin: 28px 0; }
+  .cs-detail-card { padding: 24px; border: 1px solid rgba(26,26,26,0.08); border-radius: 10px; background: var(--paper); }
+  .cs-detail-card h4 { font-family: var(--serif); font-size: 18px; font-style: italic; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .cs-detail-card p { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
+  @media (max-width: 600px) { .cs-detail-grid { grid-template-columns: 1fr; } }
+
+  .cs-decision { background: var(--ink); color: var(--paper); padding: 28px 32px; border-radius: 10px; margin: 28px 0; }
+  .cs-decision .decision-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .cs-decision p { font-size: 15px; line-height: 1.6; color: rgba(245,239,228,0.85); }
+
+  .cs-testimonial { background: var(--paper-2); padding: 48px 32px; position: relative; z-index: 2; }
+  .cs-testimonial-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  .cs-testimonial blockquote { font-family: var(--serif); font-size: clamp(20px,2.5vw,28px); font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 20px; }
+  .cs-testimonial cite { font-family: var(--mono); font-size: 12px; color: var(--muted); font-style: normal; letter-spacing: 0.04em; }
+
+  .cs-next { background: var(--ink); padding: 64px 32px; text-align: center; position: relative; z-index: 2; }
+  .cs-next-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.4); letter-spacing: 0.08em; margin-bottom: 16px; }
+  .cs-next-title { font-family: var(--serif); font-size: clamp(28px,3.5vw,44px); font-weight: 400; font-style: italic; color: var(--paper); transition: color 0.3s; }
+  .cs-next a:hover .cs-next-title { color: var(--signal); }
+
+  .cs-visual { position: relative; z-index: 2; background: var(--paper-2); padding: 40px 48px; max-width: 1280px; margin: 0 auto; }
+  .cs-visual img { width: 100%; display: block; border-radius: 12px; object-fit: cover; object-position: top; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .cs-visual-break { position: relative; z-index: 2; background: var(--paper-2); padding: 56px 48px; max-width: 1280px; margin: 0 auto; }
+  .cs-visual-break img { width: 100%; display: block; border-radius: 12px; box-shadow: 0 8px 32px rgba(26,26,26,0.1); }
+  .cs-visual-break .cs-screen-grid { margin: 0; }
+  .cs-visual-break .cs-screen { margin: 0; box-shadow: 0 8px 32px rgba(26,26,26,0.1); }
+  .cs-screen { margin: 28px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(26,26,26,0.1); }
+  .cs-screen img { width: 100%; display: block; }
+  .cs-screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .cs-screen-grid .cs-screen { margin: 0; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) { .cs-hero { padding: 120px 20px 60px; } .cs-body { padding: 60px 20px; } nav.top { padding: 14px 20px; } .cs-screen-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="index.html" class="logo">Asim<span class="star">*</span></a>
+  <a href="index.html#work" class="back">← Back to work</a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-meta">
+    <span>SocialPro</span>
+    <span>Product Designer</span>
+    <span>2024</span>
+    <span>B2B SaaS · Website</span>
+  </div>
+  <h1 class="cs-title">The marketing site hid its own <em>demo button</em>.</h1>
+  <p class="cs-lede">SocialPro's website had unclear messaging, buried CTAs, and generic illustrations instead of product screenshots. I redesigned it into a conversion-focused platform — demo requests jumped 13%.</p>
+</div>
+
+<div class="cs-outcome">
+  <div class="cs-outcome-inner">
+    <div class="outcome-stat">
+      <div class="outcome-num">+13%</div>
+      <div class="outcome-label">demo requests</div>
+    </div>
+    <div class="outcome-stat">
+      <div class="outcome-num">100%</div>
+      <div class="outcome-label">users found nav clearer</div>
+    </div>
+    <div class="outcome-stat">
+      <div class="outcome-num">New</div>
+      <div class="outcome-label">design system shipped</div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-visual">
+  <img src="images/socialpro-web.png" alt="SocialPro website redesign — homepage and product pages">
+</div>
+
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <p class="cs-label">The Problem</p>
+    <h2 class="cs-heading">Four issues killing conversion</h2>
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>Unclear Value Prop</h4>
+        <p>Messaging didn't connect SocialPro to real business pain points.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Buried CTAs</h4>
+        <p>"Book a Demo" lacked prominence and hid below the fold.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Generic Illustrations</h4>
+        <p>Abstract art replaced real product screenshots, reducing credibility with enterprise buyers.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Inconsistent Visuals</h4>
+        <p>Disjointed typography, colors, and layouts undermined trust.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Analysis</p>
+    <h2 class="cs-heading">The audit surfaced three root causes</h2>
+    <div class="cs-callout">
+      <p>"Hidden CTAs made booking demos unclear. Generic illustrations failed to showcase platform value. Inconsistent visuals reduced professionalism and trust."</p>
+      <p class="source">— UX audit findings, stakeholder alignment session</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Design Solutions</p>
+    <h2 class="cs-heading">Three changes that moved the needle</h2>
+
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>Prominent CTAs + Social Proof</h4>
+        <p>"Book a Demo" now appears at every stage of the page. Added client logos immediately below the hero to build credibility before users even scroll.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Real Product Screenshots</h4>
+        <p>Replaced all generic illustrations with actual platform screens. A feature grid highlights productivity, employee management, social procurement, and reporting.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Transparent Pricing</h4>
+        <p>Clear product tiers with feature breakdowns for quick comparison. Custom quote option for enterprise clients with complex needs.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Consistent Design System</h4>
+        <p>Unified typography, color palette, and component library applied across every page — ending the visual fragmentation that was undermining trust.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="cs-visual-break reveal">
+  <div class="cs-screen-grid">
+    <div class="cs-screen">
+      <img src="images/socialpro-web-screen1.png" alt="SocialPro website — redesigned homepage with clear CTAs">
+    </div>
+    <div class="cs-screen">
+      <img src="images/socialpro-web-screen2.png" alt="SocialPro website — product features and real screenshots">
+    </div>
+  </div>
+</div>
+
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <div class="cs-decision">
+      <p class="decision-label">Hard Decision</p>
+      <p>Stakeholders wanted to keep illustrations. I pushed for 100% real screenshots — enterprise B2B buyers need to see the actual product before committing to a demo call.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-visual-break reveal">
+  <img src="images/socialpro-web-pricing.png" alt="SocialPro website — transparent pricing page with tier comparison">
+</div>
+
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Validation</p>
+    <h2 class="cs-heading">Tested with 6 users before launch</h2>
+    <div class="cs-text">
+      <p><strong>All 6 reported the new navigation as "much clearer"</strong> — with particular praise for CTA visibility and pricing page structure.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Impact</p>
+    <h2 class="cs-heading">13% more demos, stronger market position</h2>
+    <div class="cs-text">
+      <p><strong>13% increase in conversions</strong> with a measurable jump in demo requests. The consistent design system also reduced future design and dev time for new pages.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-testimonial">
+  <div class="cs-testimonial-inner reveal">
+    <blockquote>"From day one, Asim brought a sharp eye for detail, creativity, and a genuine commitment to building user-friendly experiences. I'd recommend him to any organisation looking for a thoughtful, innovative, and dependable designer."</blockquote>
+    <cite><strong>Taylor Jenkins</strong> · Co-Founder, SocialPro</cite>
+  </div>
+</div>
+
+<div class="cs-next">
+  <p class="cs-next-label">Next project</p>
+  <a href="casestudy-mena.html">
+    <p class="cs-next-title">MENA Capital — Trading Platform →</p>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  })();
+</script>
+
+</body>
+</html>
