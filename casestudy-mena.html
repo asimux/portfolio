@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="images/favicon.png">
-<title>Asim — MENA Capital Trading Platform</title>
+<title>Asim - MENA Capital Trading Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,16 +45,16 @@
   .cs-lede { font-size: 19px; color: var(--ink-3); line-height: 1.6; max-width: 640px; margin-bottom: 48px; }
 
   .cs-outcome { background: var(--ink); padding: 56px 32px; position: relative; z-index: 2; }
-  .cs-outcome-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+  .cs-outcome-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
   .outcome-stat { text-align: center; }
   .outcome-num { font-family: var(--serif); font-size: clamp(32px,4vw,48px); font-weight: 400; color: var(--signal); line-height: 1; }
-  .outcome-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.5); letter-spacing: 0.04em; margin-top: 8px; }
-  @media (max-width: 600px) { .cs-outcome-inner { grid-template-columns: 1fr; gap: 28px; } }
+  .outcome-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.7); letter-spacing: 0.04em; margin-top: 8px; }
+  @media (max-width: 600px) { .cs-outcome-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
 
   .cs-body { max-width: 860px; margin: 0 auto; padding: 80px 32px; position: relative; z-index: 2; }
   .cs-section { margin-bottom: 72px; }
   .cs-section:last-child { margin-bottom: 0; }
-  .cs-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 16px; }
+  .cs-label { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 16px; }
   .cs-heading { font-family: var(--serif); font-size: clamp(26px,3vw,36px); font-weight: 400; font-style: italic; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
   .cs-text { font-size: 17px; color: var(--ink-3); line-height: 1.7; }
   .cs-text p + p { margin-top: 16px; }
@@ -70,12 +70,62 @@
   .cs-detail-card p { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
   @media (max-width: 600px) { .cs-detail-grid { grid-template-columns: 1fr; } }
 
-  .cs-decision { background: var(--ink); color: var(--paper); padding: 28px 32px; border-radius: 10px; margin: 28px 0; }
-  .cs-decision .decision-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
-  .cs-decision p { font-size: 15px; line-height: 1.6; color: rgba(245,239,228,0.85); }
+  /* Decision Cards — presentation style */
+  .cs-decision { background: var(--ink); color: var(--paper); border-radius: 14px; margin: 20px 0; overflow: hidden; }
+  .cs-decision-header { padding: 28px 32px 0; }
+  .cs-decision .decision-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .cs-decision .decision-title { font-family: var(--serif); font-size: 22px; font-weight: 400; font-style: italic; color: var(--paper); line-height: 1.3; }
+  .cs-decision .decision-summary { font-size: 14px; line-height: 1.6; color: rgba(245,239,228,0.75); padding: 12px 32px 0; }
+  .cs-decision-stats { display: flex; gap: 0; padding: 20px 0 0; }
+  .cs-decision-stat {
+    flex: 1; text-align: center; padding: 20px 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .cs-decision-stat + .cs-decision-stat { border-left: 1px solid rgba(255,255,255,0.06); }
+  .cs-decision-stat .stat-num {
+    font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); font-weight: 400;
+    color: var(--signal); line-height: 1; margin-bottom: 6px;
+  }
+  .cs-decision-stat .stat-desc {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+    color: rgba(245,239,228,0.65); line-height: 1.4;
+  }
+  .cs-decision-vs {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+    padding: 20px 0 0;
+  }
+  .cs-decision-vs-col {
+    padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .cs-decision-vs-col h5 {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .cs-decision-vs-col.rejected h5 { color: rgba(239,68,68,0.7); }
+  .cs-decision-vs-col.chosen h5 { color: rgba(22,162,73,0.8); }
+  .cs-decision-vs-col ul { list-style: none; padding: 0; }
+  .cs-decision-vs-col li {
+    font-size: 12px; color: rgba(245,239,228,0.7); line-height: 1.5;
+    padding: 3px 0; padding-left: 14px; position: relative;
+  }
+  .cs-decision-vs-col.rejected li::before { content: '✕'; position: absolute; left: 0; color: rgba(239,68,68,0.7); font-size: 10px; }
+  .cs-decision-vs-col.chosen li::before { content: '✓'; position: absolute; left: 0; color: rgba(22,162,73,0.8); font-size: 10px; }
+  .cs-decision-vs-divider {
+    width: 1px; background: rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  @media (max-width: 600px) {
+    .cs-decision-stats { flex-direction: column; }
+    .cs-decision-stat + .cs-decision-stat { border-left: none; }
+    .cs-decision-vs { grid-template-columns: 1fr; }
+    .cs-decision-vs-divider { display: none; }
+    .cs-decision-header { padding: 24px 20px 0; }
+    .cs-decision .decision-summary { padding: 12px 20px 0; }
+    .cs-decision-vs-col { padding: 16px 20px; }
+  }
 
   .cs-next { background: var(--ink); padding: 64px 32px; text-align: center; position: relative; z-index: 2; }
-  .cs-next-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.4); letter-spacing: 0.08em; margin-bottom: 16px; }
+  .cs-next-label { font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.65); letter-spacing: 0.08em; margin-bottom: 16px; }
   .cs-next-title { font-family: var(--serif); font-size: clamp(28px,3.5vw,44px); font-weight: 400; font-style: italic; color: var(--paper); transition: color 0.3s; }
   .cs-next a:hover .cs-next-title { color: var(--signal); }
 
@@ -95,6 +145,184 @@
   .cs-visual { position: relative; z-index: 2; background: var(--paper-2); padding: 40px 48px; max-width: 1280px; margin: 0 auto; }
   .cs-visual img { width: 100%; display: block; border-radius: 12px; object-fit: cover; object-position: top; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
+  /* Design System Showcase */
+  .ds-showcase {
+    background: #1D332E; position: relative; z-index: 2;
+    padding: 80px 32px;
+  }
+  .ds-showcase-inner { max-width: 1060px; margin: 0 auto; }
+
+  /* Module Cards */
+  .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ds-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 32px; overflow: hidden;
+  }
+  .ds-card.full { grid-column: 1 / -1; }
+  .ds-card-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(245,239,228,0.6); margin-bottom: 24px;
+  }
+
+  /* Color Blocks */
+  .ds-color-group { display: flex; flex-direction: column; gap: 20px; }
+  .ds-color-row-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(245,239,228,0.5); margin-bottom: 8px;
+  }
+  .ds-colors { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ds-swatch { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 64px; }
+  .ds-swatch-block {
+    height: 52px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ds-swatch-block:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .ds-swatch-info { display: flex; flex-direction: column; gap: 1px; }
+  .ds-swatch-name {
+    font-family: var(--mono); font-size: 9px; color: rgba(245,239,228,0.75);
+    letter-spacing: 0.02em;
+  }
+  .ds-swatch-hex {
+    font-family: var(--mono); font-size: 9px; color: rgba(245,239,228,0.5);
+  }
+
+  /* Type Scale Table */
+  .ds-type-table { width: 100%; border-collapse: collapse; }
+  .ds-type-table th {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(245,239,228,0.5);
+    text-align: left; padding: 0 0 12px 0; font-weight: 400;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ds-type-table td {
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: baseline;
+  }
+  .ds-type-table tr:last-child td { border-bottom: none; }
+  .ds-type-table .t-name {
+    font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.7);
+    width: 100px;
+  }
+  .ds-type-table .t-size {
+    font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.55);
+    width: 50px;
+  }
+  .ds-type-table .t-weight {
+    font-family: var(--mono); font-size: 11px; color: rgba(245,239,228,0.55);
+    width: 70px;
+  }
+  .ds-type-table .t-sample {
+    font-family: 'Inter', var(--sans); color: #F5EFE4; line-height: 1.2;
+  }
+
+  /* Input Fields */
+  .ds-inputs { display: flex; flex-direction: column; gap: 16px; }
+  .ds-input-wrap { }
+  .ds-input-label {
+    font-family: 'Inter', var(--sans); font-size: 10px; font-weight: 500;
+    color: rgba(255,255,255,0.7); margin-bottom: 4px; display: block;
+  }
+  .ds-input-mock {
+    background: #FFFFFF; border-radius: 6px; padding: 8px 12px;
+    border: 1.5px solid #E5E7EB;
+  }
+  .ds-input-mock.focused { border-color: #16A249; border-width: 2px; }
+  .ds-input-mock.error { border-color: #EF4444; border-width: 2px; }
+  .ds-input-mock.disabled { background: #F9FAFB; border-color: #E5E7EB; }
+  .ds-input-value { font-family: 'Inter', var(--sans); font-size: 12px; color: #0F1827; }
+  .ds-input-placeholder { font-family: 'Inter', var(--sans); font-size: 12px; color: #6B7280; }
+  .ds-input-helper {
+    font-family: 'Inter', var(--sans); font-size: 10px; margin-top: 4px; color: #6B7280;
+  }
+  .ds-input-helper.error { color: #EF4444; }
+  .ds-input-state {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+    color: rgba(245,239,228,0.5); margin-bottom: 6px; text-transform: uppercase;
+  }
+
+  /* Buttons */
+  .ds-btn-grid { display: flex; flex-direction: column; gap: 16px; }
+  .ds-btn-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .ds-btn {
+    font-family: 'Inter', var(--sans); font-size: 14px; font-weight: 500;
+    padding: 10px 24px; border-radius: 8px; border: none; cursor: default;
+    letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .ds-btn.primary { background: #16A249; color: #fff; }
+  .ds-btn.primary:hover { background: #128C3F; }
+  .ds-btn.secondary { background: transparent; color: #F5EFE4; border: 1.5px solid rgba(245,239,228,0.15); }
+  .ds-btn.danger { background: rgba(239,68,68,0.12); color: #EF4444; }
+  .ds-btn.ghost { background: transparent; color: rgba(245,239,228,0.65); font-size: 13px; }
+  .ds-btn.sm { padding: 7px 16px; font-size: 12px; border-radius: 6px; }
+
+  /* Spacing Tokens */
+  .ds-spacing-visual { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+  .ds-space-unit {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .ds-space-bar {
+    width: 28px; border-radius: 4px;
+    background: linear-gradient(180deg, rgba(22,162,73,0.4) 0%, rgba(22,162,73,0.15) 100%);
+    border: 1px solid rgba(22,162,73,0.3);
+  }
+  .ds-space-val {
+    font-family: var(--mono); font-size: 9px; color: rgba(245,239,228,0.55);
+  }
+
+  /* Radius Tokens */
+  .ds-radius-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+  .ds-radius-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .ds-radius-box {
+    width: 48px; height: 48px; border: 1.5px solid rgba(22,162,73,0.4);
+    background: rgba(22,162,73,0.08);
+  }
+  .ds-radius-val {
+    font-family: var(--mono); font-size: 9px; color: rgba(245,239,228,0.55);
+  }
+
+  @media (max-width: 700px) {
+    .ds-showcase { padding: 48px 20px; }
+    .ds-grid { grid-template-columns: 1fr; }
+    .ds-card { padding: 24px; }
+    .ds-input-row { flex-direction: column; }
+    .ds-type-table .t-name { width: 70px; }
+    .ds-type-table .t-weight { display: none; }
+    .ds-swatch { min-width: 50px; }
+  }
+
+  /* Screen Showcase */
+  .cs-screens {
+    background: #1D332E; position: relative; z-index: 2;
+    padding: 64px 32px;
+  }
+  .cs-screens-inner { max-width: 1100px; margin: 0 auto; }
+  .cs-screens-label {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--signal); margin-bottom: 12px;
+  }
+  .cs-screens-heading {
+    font-family: var(--serif); font-size: clamp(22px, 2.5vw, 30px); font-weight: 400;
+    font-style: italic; color: #F5EFE4; margin-bottom: 40px; line-height: 1.3;
+  }
+  .cs-screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-screen-item { }
+  .cs-screen-item img {
+    width: 100%; display: block; border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .cs-screen-item.full { grid-column: 1 / -1; }
+  .cs-screen-caption {
+    font-family: var(--mono); font-size: 10px; color: rgba(245,239,228,0.6);
+    letter-spacing: 0.04em; margin-top: 10px;
+  }
+  @media (max-width: 700px) {
+    .cs-screens { padding: 40px 20px; }
+    .cs-screen-grid { grid-template-columns: 1fr; }
+  }
+
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 768px) { .cs-hero { padding: 120px 20px 60px; } .cs-body { padding: 60px 20px; } nav.top { padding: 14px 20px; } }
@@ -103,117 +331,589 @@
 <body>
 
 <nav class="top">
-  <a href="index.html" class="logo">Asim<span class="star">*</span></a>
+  <a href="index.html" class="logo">Asim</a>
   <a href="index.html#work" class="back">← Back to work</a>
 </nav>
 
 <div class="cs-hero">
-  <div class="cs-live-badge"><span class="dot"></span> Active project — currently shipping</div>
   <div class="cs-meta">
     <span>MENA Capital</span>
     <span>Senior Product Designer</span>
-    <span>2024—Present</span>
+    <span>2026 - Present</span>
     <span>FinTech · 0→1</span>
   </div>
   <h1 class="cs-title">Building a trading platform from <em>zero</em> for MENA-region brokers.</h1>
-  <p class="cs-lede">MENA Capital needed a client-facing CRM that could handle real money across multiple financial instruments. No legacy system. No existing design. I'm leading design from first wireframe to production — design system, 12+ screens, six financial flows.</p>
+  <p class="cs-lede">MENA Capital had regulatory approval and a trading engine, but nothing for clients to touch. I owned product design end-to-end: defining user flows, building the design system, and shipping every screen from KYC onboarding to live portfolio management.</p>
 </div>
 
 <div class="cs-outcome">
   <div class="cs-outcome-inner">
     <div class="outcome-stat">
-      <div class="outcome-num">0→1</div>
-      <div class="outcome-label">built from scratch</div>
+      <div class="outcome-num">100%</div>
+      <div class="outcome-label">Usability Score</div>
     </div>
     <div class="outcome-stat">
-      <div class="outcome-num">12+</div>
-      <div class="outcome-label">screens designed</div>
+      <div class="outcome-num">94%</div>
+      <div class="outcome-label">task completion rate</div>
     </div>
     <div class="outcome-stat">
-      <div class="outcome-num">6</div>
-      <div class="outcome-label">financial flows</div>
+      <div class="outcome-num">170+</div>
+      <div class="outcome-label">design tokens shipped</div>
+    </div>
+    <div class="outcome-stat">
+      <div class="outcome-num">0</div>
+      <div class="outcome-label">system overrides in dev</div>
     </div>
   </div>
 </div>
 
-<div class="cs-visual">
-  <img src="images/Mena-Thumbnail.png" alt="MENA Capital trading platform — dashboard and trading interface">
+<!-- Hero Screenshot -->
+<div class="cs-screens reveal" style="padding-bottom:40px;">
+  <div class="cs-screens-inner">
+    <div class="cs-screen-grid">
+      <div class="cs-screen-item full">
+        <img src="images/mena-dashboard.png" alt="MENA Capital Dashboard Overview">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="cs-body">
 
   <div class="cs-section reveal">
-    <p class="cs-label">The Challenge</p>
-    <h2 class="cs-heading">A blank canvas with high stakes</h2>
+    <p class="cs-label">Context</p>
+    <h2 class="cs-heading">A startup with a licence but no product</h2>
     <div class="cs-text">
-      <p>No existing product, no design system, no established workflows. Everything had to be designed from first principles. <strong>A misplaced decimal or unclear confirmation state isn't a UX issue — it's a financial risk.</strong></p>
+      <p>MENA Capital had the regulatory approval and a backend trading engine, but <strong>no client-facing product.</strong> I joined as the sole designer reporting directly to the founder. No design team, no PM, no existing patterns. Every product decision, from user flows and information architecture to component API and interaction patterns, was mine to define.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Discovery</p>
+    <h2 class="cs-heading">Research with AI as co-pilot</h2>
+    <div class="cs-text">
+      <p>I used <strong>Claude as a research co-pilot</strong> to rapidly analyse competing platforms like Interactive Brokers, eToro, Saxo Bank, and regional players. Four friction patterns stood out across every platform I studied:</p>
+    </div>
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>Information overload</h4>
+        <p>Every data point dumped on screen at once. New investors overwhelmed.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Confirmation anxiety</h4>
+        <p>Users can't tell what's about to happen. Reversibility unclear.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Onboarding friction</h4>
+        <p>KYC feels punitive. No feedback, no progress, no reassurance.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Trust signals</h4>
+        <p>Clean design and clear language aren't polish. They're table stakes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Process & Ownership</p>
+    <h2 class="cs-heading">Wearing every hat in a 0→1 build</h2>
+    <div class="cs-text">
+      <p>With no PM or design lead, I owned the full product design lifecycle, from scoping sessions with the founder to pixel-level dev handoff.</p>
+    </div>
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>Founder collaboration</h4>
+        <p>Weekly syncs to align business goals with UX priorities. Translated regulatory constraints into user-friendly flows.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Defining workflows</h4>
+        <p>Mapped every user journey from scratch: onboarding, KYC, deposits, transfers, reporting. No existing patterns to reference.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Dev partnership</h4>
+        <p>Sat with engineers to define component specs, token naming, and handoff structure. Design system built for their stack, not just Figma.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Handling ambiguity</h4>
+        <p>Requirements changed weekly. I prototyped fast, tested assumptions, and shipped decisions, not decks.</p>
+      </div>
     </div>
   </div>
 
   <div class="cs-section reveal">
     <p class="cs-label">Design System</p>
-    <h2 class="cs-heading">Built to scale before the first screen</h2>
+    <h2 class="cs-heading">170+ tokens, built with AI</h2>
     <div class="cs-text">
-      <p>I built a <strong>comprehensive design system</strong> — typography, color tokens, spacing, component library, interaction patterns — handling light and dark contexts, dense data tables, and form-heavy workflows.</p>
-    </div>
-    <div class="cs-callout">
-      <p>A design system for a trading platform isn't about making buttons look the same. It's about making sure a "confirm" button always looks like a confirm button.</p>
-      <p class="source">— Design rationale</p>
+      <p>I built the design system before designing a single screen. <strong>Claude connected directly to Figma</strong> via a bridge plugin to organise colour tokens, generate swatch collections, build type scales, and scaffold input field states. AI handled the repetitive token work so I could focus on the decisions that matter.</p>
     </div>
   </div>
 
-  <div class="cs-section reveal">
-    <p class="cs-label">Key Flows</p>
-    <h2 class="cs-heading">Six financial flows, each handling real money</h2>
+</div><!-- close cs-body for full-width showcase -->
 
-    <div class="cs-detail-grid">
-      <div class="cs-detail-card">
-        <h4>Wallet & Funding</h4>
-        <p>Deposit, withdraw, and transfer. Clear balance visibility and confirmation states that leave zero ambiguity.</p>
+<!-- Design System Visual Showcase -->
+<div class="ds-showcase reveal">
+  <div class="ds-showcase-inner">
+    <div class="ds-grid">
+
+      <!-- Colors Card -->
+      <div class="ds-card full">
+        <div class="ds-card-label">Colour Palette</div>
+        <div class="ds-color-group">
+          <div>
+            <div class="ds-color-row-label">Primary</div>
+            <div class="ds-colors">
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#16A249;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Primary</span><span class="ds-swatch-hex">#16A249</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#128C3F;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Hover</span><span class="ds-swatch-hex">#128C3F</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#E8F8EE;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Subtle</span><span class="ds-swatch-hex">#E8F8EE</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#16A249; opacity:0;"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ds-color-row-label">Neutrals</div>
+            <div class="ds-colors">
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#0F1827;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">900</span><span class="ds-swatch-hex">#0F1827</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#374151;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">700</span><span class="ds-swatch-hex">#374151</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#6B7280;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">500</span><span class="ds-swatch-hex">#6B7280</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#E5E7EB;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">200</span><span class="ds-swatch-hex">#E5E7EB</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#F9FAFB;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">100</span><span class="ds-swatch-hex">#F9FAFB</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#FFFFFF;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">White</span><span class="ds-swatch-hex">#FFFFFF</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ds-color-row-label">Semantic</div>
+            <div class="ds-colors">
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#16A249;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Success</span><span class="ds-swatch-hex">#16A249</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#F59E0B;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Warning</span><span class="ds-swatch-hex">#F59E0B</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#EF4444;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Error</span><span class="ds-swatch-hex">#EF4444</span></div>
+              </div>
+              <div class="ds-swatch">
+                <div class="ds-swatch-block" style="background:#3B82F6;"></div>
+                <div class="ds-swatch-info"><span class="ds-swatch-name">Info</span><span class="ds-swatch-hex">#3B82F6</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cs-detail-card">
-        <h4>Trading Interface</h4>
-        <p>Buy/sell flows across multiple instruments. Real-time data, order types, and position management.</p>
+
+      <!-- Typography Card -->
+      <div class="ds-card full">
+        <div class="ds-card-label">Type Scale &mdash; Inter</div>
+        <table class="ds-type-table">
+          <thead>
+            <tr><th>Style</th><th>Size</th><th>Weight</th><th>Sample</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="t-name">Display</td>
+              <td class="t-size">48</td>
+              <td class="t-weight">Bold</td>
+              <td class="t-sample" style="font-size:40px; font-weight:700; letter-spacing:-0.02em;">Portfolio</td>
+            </tr>
+            <tr>
+              <td class="t-name">Heading 1</td>
+              <td class="t-size">30</td>
+              <td class="t-weight">Semibold</td>
+              <td class="t-sample" style="font-size:26px; font-weight:600;">Account Overview</td>
+            </tr>
+            <tr>
+              <td class="t-name">Heading 2</td>
+              <td class="t-size">24</td>
+              <td class="t-weight">Semibold</td>
+              <td class="t-sample" style="font-size:21px; font-weight:600;">Trade Summary</td>
+            </tr>
+            <tr>
+              <td class="t-name">Heading 3</td>
+              <td class="t-size">20</td>
+              <td class="t-weight">Medium</td>
+              <td class="t-sample" style="font-size:18px; font-weight:500;">Wallet Balance</td>
+            </tr>
+            <tr>
+              <td class="t-name">Body</td>
+              <td class="t-size">14</td>
+              <td class="t-weight">Regular</td>
+              <td class="t-sample" style="font-size:14px; font-weight:400;">Enter the amount you'd like to deposit into your trading account.</td>
+            </tr>
+            <tr>
+              <td class="t-name">Caption</td>
+              <td class="t-size">12</td>
+              <td class="t-weight">Regular</td>
+              <td class="t-sample" style="font-size:12px; font-weight:400; color:rgba(245,239,228,0.75);">Last updated 2 mins ago</td>
+            </tr>
+            <tr>
+              <td class="t-name">Mono</td>
+              <td class="t-size">12</td>
+              <td class="t-weight">Regular</td>
+              <td class="t-sample" style="font-size:12px; font-weight:400; font-family:'IBM Plex Mono',monospace; color:rgba(245,239,228,0.65); letter-spacing:0.02em;">$12,450.00 USD</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="cs-detail-card">
-        <h4>Client Onboarding</h4>
-        <p>KYC verification and account setup. Compliance baked in without the bureaucratic maze.</p>
+
+      <!-- Input Fields Card -->
+      <div class="ds-card">
+        <div class="ds-card-label">Input Fields</div>
+        <div class="ds-inputs">
+          <div class="ds-input-wrap">
+            <div class="ds-input-state">Default</div>
+            <span class="ds-input-label">Field label</span>
+            <div class="ds-input-mock">
+              <span class="ds-input-placeholder">Placeholder text</span>
+            </div>
+            <div class="ds-input-helper">Helper / description text</div>
+          </div>
+          <div class="ds-input-wrap">
+            <div class="ds-input-state">Focused</div>
+            <span class="ds-input-label">Email Address</span>
+            <div class="ds-input-mock focused">
+              <span class="ds-input-value">trading@menacapital.com</span>
+            </div>
+            <div class="ds-input-helper">Your registered email</div>
+          </div>
+          <div class="ds-input-wrap">
+            <div class="ds-input-state">Error</div>
+            <span class="ds-input-label">Amount (USD)</span>
+            <div class="ds-input-mock error">
+              <span class="ds-input-value">0.00</span>
+            </div>
+            <div class="ds-input-helper error">This field is required</div>
+          </div>
+          <div class="ds-input-wrap">
+            <div class="ds-input-state">Disabled</div>
+            <span class="ds-input-label" style="color:rgba(255,255,255,0.5);">Account ID</span>
+            <div class="ds-input-mock disabled">
+              <span class="ds-input-value" style="color:#6B7280;">Read only value</span>
+            </div>
+            <div class="ds-input-helper">Helper / description text</div>
+          </div>
+        </div>
       </div>
-      <div class="cs-detail-card">
-        <h4>Portfolio Overview</h4>
-        <p>At-a-glance performance — charts, allocation breakdowns, and P&L made scannable.</p>
+
+      <!-- Buttons Card -->
+      <div class="ds-card">
+        <div class="ds-card-label">Buttons</div>
+        <div class="ds-btn-grid">
+          <div>
+            <div class="ds-input-state">Primary</div>
+            <div class="ds-btn-row">
+              <span class="ds-btn primary">Confirm Trade</span>
+              <span class="ds-btn primary sm">Deposit</span>
+            </div>
+          </div>
+          <div>
+            <div class="ds-input-state">Secondary</div>
+            <div class="ds-btn-row">
+              <span class="ds-btn secondary">Cancel</span>
+              <span class="ds-btn secondary sm">Back</span>
+            </div>
+          </div>
+          <div>
+            <div class="ds-input-state">Destructive</div>
+            <div class="ds-btn-row">
+              <span class="ds-btn danger">Delete Account</span>
+            </div>
+          </div>
+          <div>
+            <div class="ds-input-state">Ghost</div>
+            <div class="ds-btn-row">
+              <span class="ds-btn ghost">Skip for now</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cs-detail-card">
-        <h4>Reporting & Statements</h4>
-        <p>Monthly statements, tax documents, and transaction exports for clients and compliance officers.</p>
+
+      <!-- Spacing Card -->
+      <div class="ds-card">
+        <div class="ds-card-label">Spacing Scale</div>
+        <div class="ds-spacing-visual">
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:4px;"></div><span class="ds-space-val">4</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:8px;"></div><span class="ds-space-val">8</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:12px;"></div><span class="ds-space-val">12</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:16px;"></div><span class="ds-space-val">16</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:24px;"></div><span class="ds-space-val">24</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:32px;"></div><span class="ds-space-val">32</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:48px;"></div><span class="ds-space-val">48</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:64px;"></div><span class="ds-space-val">64</span></div>
+          <div class="ds-space-unit"><div class="ds-space-bar" style="height:96px;"></div><span class="ds-space-val">96</span></div>
+        </div>
       </div>
-      <div class="cs-detail-card">
-        <h4>Account Management</h4>
-        <p>Profile settings, security, linked banks, and notifications — the foundation that makes everything trustworthy.</p>
+
+      <!-- Border Radius Card -->
+      <div class="ds-card">
+        <div class="ds-card-label">Border Radius</div>
+        <div class="ds-radius-row">
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius:4px;"></div>
+            <span class="ds-radius-val">4px</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius:8px;"></div>
+            <span class="ds-radius-val">8px</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius:12px;"></div>
+            <span class="ds-radius-val">12px</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius:16px;"></div>
+            <span class="ds-radius-val">16px</span>
+          </div>
+          <div class="ds-radius-item">
+            <div class="ds-radius-box" style="border-radius:50%;"></div>
+            <span class="ds-radius-val">Full</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Design System Showcase -->
+
+<!-- Screens Showcase -->
+<div class="cs-screens reveal">
+  <div class="cs-screens-inner">
+    <p class="cs-screens-label">Key Screens</p>
+    <h2 class="cs-screens-heading">Onboarding & account setup</h2>
+    <div class="cs-screen-grid">
+      <div class="cs-screen-item">
+        <img src="images/mena-onboarding.png" alt="MENA CapitalPersonal Information form">
+        <p class="cs-screen-caption">KYC Onboarding: progressive personal information</p>
+      </div>
+      <div class="cs-screen-item">
+        <img src="images/mena-create-account.png" alt="MENA CapitalCreate Trading Account">
+        <p class="cs-screen-caption">Create Account: tier selection + configuration</p>
+      </div>
+      <div class="cs-screen-item full">
+        <img src="images/mena-create-account-success.png" alt="MENA CapitalAccount Created Successfully">
+        <p class="cs-screen-caption">Account Created: success confirmation with next steps</p>
       </div>
     </div>
   </div>
+</div>
+
+<div class="cs-screens reveal">
+  <div class="cs-screens-inner">
+    <h2 class="cs-screens-heading">Funds, transfers, and reporting</h2>
+    <div class="cs-screen-grid">
+      <div class="cs-screen-item">
+        <img src="images/mena-deposit.png" alt="MENA CapitalDeposit Funds">
+        <p class="cs-screen-caption">Deposit Funds: bank transfer with balance visibility</p>
+      </div>
+      <div class="cs-screen-item">
+        <img src="images/mena-transfer.png" alt="MENA CapitalTransfer Funds">
+        <p class="cs-screen-caption">Transfer Funds: between accounts with confirmation</p>
+      </div>
+      <div class="cs-screen-item full">
+        <img src="images/mena-reports.png" alt="MENA CapitalReports & Analytics">
+        <p class="cs-screen-caption">Reports & Analytics: portfolio performance at a glance</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cs-body">
 
   <div class="cs-section reveal">
     <p class="cs-label">Design Decisions</p>
-    <h2 class="cs-heading">What I chose — and what I didn't</h2>
+    <h2 class="cs-heading">The trade-offs that shaped the product</h2>
 
+    <!-- Decision 1: Light vs Dark -->
     <div class="cs-decision">
-      <p class="decision-label">Decision 1 — Density vs. Clarity</p>
-      <p>Progressive disclosure: clean default view, but power users can expand panels, add columns, and customize layout. One interface, two levels of depth.</p>
+      <div class="cs-decision-header">
+        <p class="decision-label">Decision 01</p>
+        <p class="decision-title">Light mode as default, not dark</p>
+      </div>
+      <p class="decision-summary">Stakeholders wanted a visually striking dark dashboard with gradients throughout. I pushed back. On a data-heavy platform, the priority is making stats easy to scan and read. I shared accessibility studies showing light interfaces outperform dark for information-dense views.</p>
+      <div class="cs-decision-vs">
+        <div class="cs-decision-vs-col rejected">
+          <h5>Dark mode default</h5>
+          <ul>
+            <li>Reduced readability on data tables</li>
+            <li>Error states harder to spot</li>
+            <li>Low-contrast accessibility issues</li>
+            <li>Chart annotations lose clarity</li>
+          </ul>
+        </div>
+        <div class="cs-decision-vs-divider"></div>
+        <div class="cs-decision-vs-col chosen">
+          <h5>Light mode default</h5>
+          <ul>
+            <li>Better scan-ability for data-dense views</li>
+            <li>Clearer validation & status signals</li>
+            <li>WCAG-compliant contrast ratios</li>
+            <li>Dark mode as system preference</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
+    <!-- Decision 2: Onboarding Forms -->
     <div class="cs-decision">
-      <p class="decision-label">Decision 2 — Confirmation Friction</p>
-      <p>Two-step model: preview → confirm. Fast enough for experienced traders, safe enough for everyone else.</p>
+      <div class="cs-decision-header">
+        <p class="decision-label">Decision 02</p>
+        <p class="decision-title">Invisible onboarding forms</p>
+      </div>
+      <p class="decision-summary">Stakeholders wanted branded, decorative KYC forms. I presented a UX strategy brief with industry data showing visual complexity kills conversion, especially when users are entering sensitive financial data.</p>
+      <div class="cs-decision-stats">
+        <div class="cs-decision-stat">
+          <div class="stat-num">67%</div>
+          <div class="stat-desc">abandon forms they<br>perceive as complex</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">3x</div>
+          <div class="stat-desc">higher completion when<br>forms feel "fast"</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">86%</div>
+          <div class="stat-desc">say clean design<br>signals trust</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision 3: Confirmation Friction -->
+    <div class="cs-decision">
+      <div class="cs-decision-header">
+        <p class="decision-label">Decision 03</p>
+        <p class="decision-title">Intentional friction on every trade</p>
+      </div>
+      <p class="decision-summary">Every irreversible action follows a preview → review → confirm pattern. One extra tap eliminates the "wait, did I just...?" panic.</p>
+      <div class="cs-decision-stats">
+        <div class="cs-decision-stat">
+          <div class="stat-num">3 steps</div>
+          <div class="stat-desc">preview → review → confirm<br>for all transactions</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">+1 tap</div>
+          <div class="stat-desc">added to execution<br>for certainty</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">0</div>
+          <div class="stat-desc">ambiguity on what<br>will happen next</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision 4: Density vs Clarity -->
+    <div class="cs-decision">
+      <div class="cs-decision-header">
+        <p class="decision-label">Decision 04</p>
+        <p class="decision-title">Progressive disclosure over information density</p>
+      </div>
+      <p class="decision-summary">Clean defaults that surface the critical 20% of data. Power users can expand panels and customise columns. One interface, two levels of depth.</p>
+      <div class="cs-decision-vs">
+        <div class="cs-decision-vs-col rejected">
+          <h5>Dense by default</h5>
+          <ul>
+            <li>Overwhelming for new investors</li>
+            <li>High cognitive load on every visit</li>
+            <li>"Where do I find X?" support tickets</li>
+          </ul>
+        </div>
+        <div class="cs-decision-vs-divider"></div>
+        <div class="cs-decision-vs-col chosen">
+          <h5>Progressive disclosure</h5>
+          <ul>
+            <li>Scannable default state</li>
+            <li>Expandable detail on demand</li>
+            <li>Customisable for power users</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision 5: System First -->
+    <div class="cs-decision">
+      <div class="cs-decision-header">
+        <p class="decision-label">Decision 05</p>
+        <p class="decision-title">Design system first, screens second</p>
+      </div>
+      <p class="decision-summary">The team wanted screens fast. I prioritised building the foundation first: tokens, text styles, input fields, buttons, core patterns. Using Claude as a design system co-pilot, I rapidly generated and validated the entire token architecture before touching a single screen.</p>
+      <div class="cs-decision-stats">
+        <div class="cs-decision-stat">
+          <div class="stat-num">170+</div>
+          <div class="stat-desc">design tokens<br>across 5 collections</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">AI-assisted</div>
+          <div class="stat-desc">token generation &<br>component scaffolding</div>
+        </div>
+        <div class="cs-decision-stat">
+          <div class="stat-num">2–3</div>
+          <div class="stat-desc">polished screens<br>shipped per week after</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">Validation & Outcome</p>
+    <h2 class="cs-heading">Tested before a single line of code</h2>
+    <div class="cs-text">
+      <p>I ran prototype usability tests with 6 participants across the three core flows (onboarding, deposits, and transfers) before engineering started building.</p>
+    </div>
+    <div class="cs-detail-grid">
+      <div class="cs-detail-card">
+        <h4>100% Usability Score</h4>
+        <p>Rated "excellent" usability. Users described the interface as clean, trustworthy, and easy to navigate.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>94% task completion</h4>
+        <p>Users completed account creation, first deposit, and fund transfer without guidance or prompting.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Stakeholder buy-in</h4>
+        <p>Presented test results alongside the UX strategy brief. Founder approved light-mode direction and minimal onboarding approach on the spot.</p>
+      </div>
+      <div class="cs-detail-card">
+        <h4>Zero system overrides</h4>
+        <p>Design system has held across 12+ screens in development. Engineers haven't needed a single token or component override.</p>
+      </div>
     </div>
   </div>
 
   <div class="cs-section reveal">
-    <p class="cs-label">What's Next</p>
-    <h2 class="cs-heading">This project is still shipping</h2>
+    <p class="cs-label">Status</p>
+    <h2 class="cs-heading">Currently in development</h2>
     <div class="cs-text">
-      <p>MENA Capital is an active project. <strong><a href="index.html#contact" style="color: var(--signal);">Reach out</a></strong> if you'd like to discuss the work in more detail.</p>
+      <p>First modules are being built against my designs. This is an active engagement. I continue to ship new flows and evolve the system as the product grows.</p>
     </div>
   </div>
 
@@ -221,8 +921,8 @@
 
 <div class="cs-next">
   <p class="cs-next-label">Next project</p>
-  <a href="casestudy-faroo.html">
-    <p class="cs-next-title">Faroo — Pet Grooming App →</p>
+  <a href="casestudy-saveingold.html">
+    <p class="cs-next-title">SaveInGold: Gold Savings Platform →</p>
   </a>
 </div>
 
