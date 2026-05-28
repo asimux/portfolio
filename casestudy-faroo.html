@@ -127,7 +127,7 @@
     </div>
     <div class="outcome-stat">
       <div class="outcome-num">+30%</div>
-      <div class="outcome-label">groomer efficiency</div>
+      <div class="outcome-label">more appointments per day</div>
     </div>
   </div>
 </div>
@@ -225,6 +225,15 @@
   </div>
 
   <div class="cs-section reveal">
+    <p class="cs-label">Constraints</p>
+    <h2 class="cs-heading">What I had to work around</h2>
+    <div class="cs-text">
+      <p>The original booking flow collected pet details, groomer preferences, and scheduling in one long form. My first redesign split it into a clean step-by-step wizard, but <strong>usability testing showed users abandoned at step 3</strong> because they couldn't see total cost until the end. I had to restructure the flow to surface pricing alongside each selection, which meant rethinking the information architecture mid-project.</p>
+      <p>On the groomer side, the map API we integrated had rate limits that made real-time route recalculation expensive. Instead of live updates, I designed the route view to optimize once at the start of the day with manual refresh, which groomers actually preferred since it gave them a predictable schedule.</p>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
     <p class="cs-label">Groomer Experience</p>
     <h2 class="cs-heading">Route optimization turned more appointments into less driving</h2>
     <div class="cs-text">
@@ -250,22 +259,25 @@
   <div class="cs-section reveal">
     <p class="cs-label">Beta Results</p>
     <h2 class="cs-heading">The numbers validated the hypothesis</h2>
+    <div class="cs-text">
+      <p>We ran a <strong>4-week closed beta</strong> with 15 pet owners and 6 groomers in Dubai. Metrics were tracked through in-app analytics and a post-beta survey.</p>
+    </div>
     <div class="cs-detail-grid">
       <div class="cs-detail-card">
         <h4>−50% Booking Time</h4>
-        <p>Streamlined flow and geolocation cut scheduling time in half.</p>
+        <p>Average time from opening the app to confirmed booking dropped from 6 minutes to under 3, measured across all beta bookings.</p>
       </div>
       <div class="cs-detail-card">
         <h4>4.8/5 Satisfaction</h4>
-        <p>Transparent pricing and post-completion payment gave users confidence.</p>
+        <p>Post-beta survey score across all 15 pet owner participants. Transparent pricing and post-completion payment were the top-cited reasons.</p>
       </div>
       <div class="cs-detail-card">
-        <h4>+30% Groomer Efficiency</h4>
-        <p>Route optimization and the daily dashboard reduced wasted travel time.</p>
+        <h4>+30% More Appointments per Day</h4>
+        <p>Groomers completed an average of 30% more appointments daily thanks to route optimization reducing travel time between bookings.</p>
       </div>
       <div class="cs-detail-card">
         <h4>Top Feature</h4>
-        <p>Route optimization became the feature groomers mentioned most in feedback.</p>
+        <p>Route optimization was the feature groomers mentioned most in feedback. One groomer said it saved over 45 minutes of driving per day.</p>
       </div>
     </div>
   </div>
