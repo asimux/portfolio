@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJ8R116C7H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-JJ8R116C7H");
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asim — Visual Gallery</title>
+<meta name="description" content="A collection of visual design work by Asim — mobile apps, web platforms, and UI explorations.">
+<meta property="og:title" content="Asim — Visual Gallery">
+<meta property="og:description" content="A collection of visual design work — mobile apps, web platforms, and UI explorations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://masim.design/gallery">
+<meta property="og:image" content="https://masim.design/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Acorn';
+    src: url('fonts/acorn-7.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --paper: #F5EFE4;
+    --paper-2: #EDE5D2;
+    --sand: #E8DFCB;
+    --ink: #1A1A1A;
+    --ink-2: #2C2C2A;
+    --ink-3: #444441;
+    --muted: #5F5E5A;
+    --hint: #888780;
+    --signal: #FF5B1F;
+    --signal-deep: #C2421A;
+    --deep: #2D5F4F;
+    --hero: 'Acorn', 'Georgia', serif;
+    --serif: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    --sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    --pixel: 'VT323', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+    position: relative;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; cursor: none; }
+  button { cursor: none; font-family: inherit; }
+  ::selection { background: var(--signal); color: #fff; }
+
+  /* GRAIN */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* CURSOR */
+  .cursor-dot {
+    position: fixed;
+    width: 14px; height: 14px;
+    background: var(--signal);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease;
+    mix-blend-mode: multiply;
+    will-change: transform;
+  }
+  .cursor-dot.large { width: 64px; height: 64px; opacity: 0.85; }
+  @media (max-width: 768px), (pointer: coarse) {
+    body, a, button { cursor: auto; }
+    .cursor-dot { display: none; }
+  }
+
+  /* NAV */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    background: rgba(245, 239, 228, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(26,26,26,0.08);
+  }
+  nav.top .logo {
+    font-family: var(--hero);
+    font-size: 22px;
+    font-style: normal;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  nav.top .links { display: flex; gap: 32px; align-items: center; }
+  nav.top .links a {
+    transition: color 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+  nav.top .links a:hover { color: var(--signal); }
+  @media (max-width: 768px) {
+    nav.top { padding: 14px 20px; }
+    nav.top .links { display: none; }
+  }
+
+  /* GALLERY HEADER */
+  .gallery-hero {
+    padding: 140px 32px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .gallery-hero .back-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+    transition: color 0.2s;
+  }
+  .gallery-hero .back-link:hover { color: var(--signal); }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hint);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--signal); font-weight: 500; }
+  .gallery-desc {
+    font-size: 17px;
+    color: var(--ink-3);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* MASONRY GRID */
+  .gallery-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px 120px;
+    position: relative;
+    z-index: 2;
+    columns: 3;
+    column-gap: 20px;
+  }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--ink);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    position: relative;
+  }
+  .gallery-item:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.16);
+    z-index: 3;
+  }
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.03);
+  }
+  .gallery-item .gallery-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover .gallery-label {
+    opacity: 1;
+  }
+  .gallery-label-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .gallery-label-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-grid { columns: 2; }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { columns: 1; padding: 0 20px 80px; }
+    .gallery-hero { padding: 110px 20px 40px; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: var(--hero);
+    font-size: 18px;
+    font-style: normal;
+    color: var(--paper);
+  }
+  .footer-left .star { color: var(--signal); font-style: normal; }
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(245,239,228,0.65);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 600px) {
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor"></div>
+
+<nav class="top">
+  <a href="/" class="logo" data-hover>Asim</a>
+  <div class="links">
+    <a href="/#work" data-hover>Work</a>
+    <a href="/#process" data-hover>How I work</a>
+    <a href="/#about" data-hover>About</a>
+    <a href="/#contact" data-hover>Contact</a>
+  </div>
+</nav>
+
+<div class="gallery-hero">
+  <a href="/" class="back-link" data-hover>← Back to home</a>
+  <p class="section-label reveal">◆ visual gallery</p>
+  <h2 class="section-title reveal">The <em>visual</em> side of things.</h2>
+  <p class="gallery-desc reveal">A collection of UI explorations, concept designs, and side projects across mobile apps, web platforms, and dashboards.</p>
+</div>
+
+<div class="gallery-grid">
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-farmhub.png" alt="Farmhub mobile app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Farmhub</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-34036092.png" alt="Cryptade trading platform" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Cryptade</p>
+      <p class="gallery-label-type">Web Platform</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-macho.jpg" alt="Macho restaurant app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Macho</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture e-commerce" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Good Furniture</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant web app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">My e-Assistant</p>
+      <p class="gallery-label-type">Web Platform</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum AR app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Art Museum</p>
+      <p class="gallery-label-type">Mobile App · AR</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-33373820.png" alt="Gaming streaming app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Game Streaming</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-ai-study.png" alt="AI Study Assistant" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">AI Study Assistant</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-taskforge.png" alt="TaskForge business app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">TaskForge</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-34408640.jpg" alt="The Commuter transport app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">The Commuter</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-36687300.png" alt="Ice Cream ordering app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Ice Cream Shop</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal">
+    <img src="images/showcase/dribbble-39480797.png" alt="Home services booking app" loading="lazy">
+    <div class="gallery-label">
+      <p class="gallery-label-title">Home Services</p>
+      <p class="gallery-label-type">Mobile App</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-left" data-hover>Asim</a>
+    <div class="footer-right">designed & built by hand · london · 2026</div>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  (function() {
+    const cursor = document.getElementById('cursor');
+    if (!cursor) return;
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let dotX = mouseX, dotY = mouseY;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+    });
+    function animate() {
+      dotX += (mouseX - dotX) * 0.18;
+      dotY += (mouseY - dotY) * 0.18;
+      cursor.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+    document.querySelectorAll('[data-hover]').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('large'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('large'));
+    });
+  })();
+
+  // SCROLL REVEAL
+  (function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  })();
+</script>
+
+</body>
+</html>

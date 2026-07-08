@@ -1348,6 +1348,94 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ──────────────────────────────────────────
+     VISUAL SHOWCASE
+     ────────────────────────────────────────── */
+  section.showcase {
+    padding: 100px 32px 80px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .showcase-header {
+    max-width: 1280px;
+    margin: 0 auto 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .showcase-header .section-title { margin-bottom: 0; }
+  .showcase-see-all {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    padding: 12px 24px;
+    border: 1px solid rgba(26,26,26,0.15);
+    border-radius: 999px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .showcase-see-all:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .showcase-track-wrap {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  }
+  .showcase-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: showcaseScroll 35s linear infinite;
+    will-change: transform;
+  }
+  .showcase-track:hover {
+    animation-play-state: paused;
+  }
+  .showcase-card {
+    flex-shrink: 0;
+    width: 420px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    background: var(--ink);
+  }
+  .showcase-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+  }
+  .showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/3;
+  }
+  @keyframes showcaseScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (max-width: 768px) {
+    .showcase-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .showcase-card { width: 300px; }
+    section.showcase { padding: 80px 20px 60px; }
+  }
 </style>
 </head>
 <body>
@@ -1430,6 +1518,34 @@
     <rect x="18" y="34" width="8" height="1" fill="#1A1A1A"/>
   </svg>
 </div>
+
+<!-- VISUAL SHOWCASE -->
+<section class="showcase" id="showcase">
+  <div class="showcase-header">
+    <div>
+      <p class="section-label reveal">◆ visual range</p>
+      <h2 class="section-title reveal">Not just flows and frameworks. <br>I make things <em>look good</em> too.</h2>
+    </div>
+    <a href="gallery.html" class="showcase-see-all reveal" data-hover>See all work ↗</a>
+  </div>
+  <div class="showcase-track-wrap">
+    <div class="showcase-track">
+      <div class="showcase-card"><img src="images/showcase/dribbble-farmhub.png" alt="Farmhub — farm-to-table mobile app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-macho.jpg" alt="Macho — restaurant discovery app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture — e-commerce app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34036092.png" alt="Cryptade — crypto trading platform" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum — AR museum guide app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant — productivity web app" loading="lazy"></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="showcase-card"><img src="images/showcase/dribbble-farmhub.png" alt="Farmhub — farm-to-table mobile app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-macho.jpg" alt="Macho — restaurant discovery app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture — e-commerce app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34036092.png" alt="Cryptade — crypto trading platform" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum — AR museum guide app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant — productivity web app" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
 <!-- SELECTED WORK -->
 <section class="work" id="work">
