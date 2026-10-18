@@ -254,6 +254,18 @@
     .compare-side { grid-template-columns: 1fr; gap: 32px; }
     .compare-side-item img { max-width: 220px; }
   }
+  /* OLD FLOW: browser frames */
+  .old-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 20px; max-width: 1000px; margin: 0 auto; }
+  .old-shot { margin: 0; }
+  .old-shot .browser { border-radius: 14px; overflow: hidden; background: #1f1f1f; box-shadow: 0 12px 40px rgba(0,0,0,0.35); border: 1px solid rgba(245,239,228,0.08); }
+  .old-shot .browser-bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #2b2b2b; }
+  .old-shot .browser-bar .dots { display: flex; gap: 5px; flex-shrink: 0; }
+  .old-shot .browser-bar .dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(245,239,228,0.25); display: block; }
+  .old-shot .browser-bar .url { flex: 1; min-width: 0; font-family: var(--mono); font-size: 10px; color: rgba(245,239,228,0.6); background: rgba(0,0,0,0.35); border-radius: 999px; padding: 4px 10px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .old-shot img { display: block; width: 100%; aspect-ratio: 720 / 1180; object-fit: cover; object-position: top; }
+  .old-shot figcaption { font-size: 13px; color: rgba(245,239,228,0.6); margin-top: 12px; text-align: center; }
+  .old-shot figcaption b { font-family: var(--mono); font-weight: 400; color: var(--signal); margin-right: 6px; }
+  @media (max-width: 760px) { .old-shots { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; } }
 </style>
 </head>
 <body>
@@ -420,13 +432,37 @@
     <h2 class="cs-heading" style="color: var(--paper); font-size: clamp(22px,2.5vw,30px);">What users had to go through externally</h2>
     <p style="font-size: 15px; color: rgba(245,239,228,0.6); line-height: 1.6; max-width: 600px; margin: 0 auto;">Six external browser screens — basic info, financial info, declarations, email verification, 2FA, and OTP entry. All on a third-party domain. All outside the app.</p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto;">
-    <img src="images/sig-old-screen-1.png" alt="Old registration — basic information" style="width: 100%; border-radius: 12px; display: block;">
-    <img src="images/sig-old-screen-2.png" alt="Old registration — financial information" style="width: 100%; border-radius: 12px; display: block;">
-    <img src="images/sig-old-screen-3.png" alt="Old registration — declaration" style="width: 100%; border-radius: 12px; display: block;">
-    <img src="images/sig-old-screen-4.png" alt="Old registration — email verification" style="width: 100%; border-radius: 12px; display: block;">
-    <img src="images/sig-old-screen-5.png" alt="Old registration — two-factor authentication" style="width: 100%; border-radius: 12px; display: block;">
-    <img src="images/sig-old-screen-6.png" alt="Old registration — OTP entry" style="width: 100%; border-radius: 12px; display: block;">
+  <div class="old-shots">
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-1.png" alt="Old registration in an external browser: basic information" loading="lazy"></div>
+      <figcaption><b>01</b>Basic information</figcaption>
+    </figure>
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-2.png" alt="Old registration in an external browser: financial information" loading="lazy"></div>
+      <figcaption><b>02</b>Financial information</figcaption>
+    </figure>
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-3.png" alt="Old registration in an external browser: declaration" loading="lazy"></div>
+      <figcaption><b>03</b>Declaration</figcaption>
+    </figure>
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-4.png" alt="Old registration in an external browser: email verification" loading="lazy"></div>
+      <figcaption><b>04</b>Email verification</figcaption>
+    </figure>
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-5.png" alt="Old registration in an external browser: two-factor authentication" loading="lazy"></div>
+      <figcaption><b>05</b>Two-factor authentication</figcaption>
+    </figure>
+    <figure class="old-shot">
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <img src="images/sig-old-step-6.png" alt="Old registration in an external browser: code entry" loading="lazy"></div>
+      <figcaption><b>06</b>Code entry</figcaption>
+    </figure>
   </div>
 </div>
 
