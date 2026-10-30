@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="images/favicon.png">
-<title>Asim — SaveInGold Case Study</title>
+<title>SaveInGold onboarding, Asim</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -254,6 +254,44 @@
     .compare-side { grid-template-columns: 1fr; gap: 32px; }
     .compare-side-item img { max-width: 220px; }
   }
+
+  /* JOURNEY: OLD (where users dropped) */
+  .old-journey { display: flex; align-items: stretch; gap: 0; margin: 36px 0 8px; flex-wrap: wrap; }
+  .oj-step { flex: 1 1 120px; padding: 16px 14px; border: 1px solid rgba(26,26,26,0.1); border-radius: 10px; background: var(--paper); position: relative; }
+  .oj-step + .oj-step { margin-left: 22px; }
+  .oj-step + .oj-step::before { content: '\2192'; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); color: var(--hint); font-size: 14px; }
+  .oj-step .oj-where { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--hint); margin-bottom: 6px; }
+  .oj-step p { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+  .oj-step.outside { background: var(--paper-2); border-style: dashed; }
+  .oj-step.drop { border-color: var(--signal); }
+  .oj-step.drop .oj-where { color: var(--signal); }
+  @media (max-width: 760px) { .oj-step { flex-basis: 100%; } .oj-step + .oj-step { margin: 18px 0 0; } .oj-step + .oj-step::before { content: '\2193'; left: 50%; top: -16px; transform: none; } }
+
+  /* API STAGES */
+  .api-stages { counter-reset: stage; margin: 28px 0; border: 1px solid rgba(26,26,26,0.1); border-radius: 12px; overflow: hidden; background: var(--paper); }
+  .api-stage { display: grid; grid-template-columns: 44px 170px 1fr; gap: 16px; padding: 16px 20px; align-items: baseline; }
+  .api-stage + .api-stage { border-top: 1px solid rgba(26,26,26,0.08); }
+  .api-stage::before { counter-increment: stage; content: counter(stage, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--signal); }
+  .api-stage h4 { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .api-stage p { font-size: 14px; color: var(--ink-3); line-height: 1.5; }
+  @media (max-width: 600px) { .api-stage { grid-template-columns: 32px 1fr; } .api-stage p { grid-column: 2; } }
+
+  /* NEW JOURNEY */
+  .journey { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; margin: 48px auto 0; max-width: 1000px; }
+  .journey-step img { width: 100%; max-width: 240px; display: block; margin: 0 auto 18px; }
+  .journey-step .js-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--signal); margin-bottom: 6px; }
+  .journey-step h4 { font-size: 17px; font-weight: 600; color: var(--paper); margin-bottom: 10px; }
+  .journey-step dl { font-size: 13px; line-height: 1.5; }
+  .journey-step dt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(245,239,228,0.45); margin-top: 8px; }
+  .journey-step dd { color: rgba(245,239,228,0.75); }
+  @media (max-width: 860px) { .journey { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .journey { grid-template-columns: 1fr; } }
+
+  /* REFLECTION LIST */
+  .cs-list { margin: 20px 0 0; padding-left: 20px; }
+  .cs-list li { font-size: 17px; color: var(--ink-3); line-height: 1.65; margin-top: 10px; }
+  .cs-list li strong { color: var(--ink); font-weight: 600; }
+
   /* OLD FLOW: browser frames */
   .old-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 20px; max-width: 1000px; margin: 0 auto; }
   .old-shot { margin: 0; }
@@ -266,341 +304,585 @@
   .old-shot figcaption { font-size: 13px; color: rgba(245,239,228,0.6); margin-top: 12px; text-align: center; }
   .old-shot figcaption b { font-family: var(--mono); font-weight: 400; color: var(--signal); margin-right: 6px; }
   @media (max-width: 760px) { .old-shots { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; } }
+  /* ===== V2 REDESIGN ===== */
+  .v2-intro { background: var(--ink); color: var(--paper); padding: 96px 32px 72px; position: relative; z-index: 2; }
+  .v2-intro-inner { max-width: 860px; margin: 0 auto; }
+  .v2-intro .cs-heading { color: var(--paper); }
+  .v2-intro .cs-text { color: rgba(245,239,228,0.72); }
+  .v2-intro .cs-text strong { color: var(--paper); }
+  .v2-why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .v2-why div { border: 1px solid rgba(245,239,228,0.12); border-radius: 12px; padding: 20px; }
+  .v2-why b { display: block; font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 6px; }
+  .v2-why p { font-size: 14px; line-height: 1.55; color: rgba(245,239,228,0.6); }
+  @media (max-width: 760px) { .v2-why { grid-template-columns: 1fr; } }
+
+  .gs-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 640px; margin: 40px auto 0; }
+  .gs-compare figure { margin: 0; text-align: center; }
+  .gs-compare img { width: 100%; max-width: 260px; border-radius: 28px; display: block; margin: 0 auto; box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+  .gs-compare figcaption { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 14px; }
+  .gs-compare figcaption b { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hint); margin-bottom: 4px; font-weight: 400; }
+  .gs-compare .after figcaption b { color: var(--signal); }
+  @media (max-width: 560px) { .gs-compare { grid-template-columns: 1fr; } }
+
+  .reg-table { margin: 28px 0; border: 1px solid rgba(26,26,26,0.1); border-radius: 12px; overflow: hidden; background: var(--paper); }
+  .reg-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; padding: 18px 22px; }
+  .reg-row + .reg-row { border-top: 1px solid rgba(26,26,26,0.08); }
+  .reg-row.head { background: var(--paper-2); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hint); padding-block: 12px; }
+  .reg-row h4 { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .reg-row .src { font-size: 12px; color: var(--hint); line-height: 1.45; }
+  .reg-row p { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
+  @media (max-width: 640px) { .reg-row { grid-template-columns: 1fr; gap: 6px; } .reg-row.head { display: none; } }
+
+  .tradeoffs { display: flex; flex-direction: column; gap: 20px; margin: 32px 0; }
+  .tradeoff { border: 1px solid rgba(26,26,26,0.1); border-radius: 14px; background: var(--paper); overflow: hidden; }
+  .tradeoff-head { padding: 22px 24px 0; }
+  .tradeoff-head .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--signal); }
+  .tradeoff-head h3 { font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1.3; margin-top: 6px; }
+  .tradeoff-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(26,26,26,0.08); margin-top: 18px; }
+  .tradeoff-body div { background: var(--paper); padding: 18px 24px 22px; }
+  .tradeoff-body b { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hint); font-weight: 400; margin-bottom: 6px; }
+  .tradeoff-body p { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
+  @media (max-width: 760px) { .tradeoff-body { grid-template-columns: 1fr; } }
+
+  .flow-stage { margin-top: 64px; }
+  .flow-stage:first-of-type { margin-top: 48px; }
+  .flow-stage-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .flow-stage-head span { font-family: var(--mono); font-size: 11px; color: var(--signal); }
+  .flow-stage-head h3 { font-size: 22px; font-weight: 600; color: var(--paper); }
+  .flow-stage > p { font-size: 15px; color: rgba(245,239,228,0.6); line-height: 1.6; max-width: 640px; }
+  .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; margin-top: 28px; }
+  .flow-grid figure { margin: 0; display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+  .flow-grid img { align-self: start; }
+  .flow-grid img { width: 100%; display: block; border-radius: 22px; box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+  .flow-grid figcaption { margin-top: 12px; }
+  .flow-grid figcaption b { display: block; font-size: 14px; font-weight: 600; color: var(--paper); }
+  .flow-grid figcaption span { display: block; font-size: 13px; color: rgba(245,239,228,0.55); line-height: 1.5; margin-top: 4px; }
+  .flow-grid .chip { display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-top: 8px; }
+  .chip.api { background: rgba(187,164,115,0.18); color: #A0DFFF; }
+  .chip.uae { background: rgba(52,199,89,0.16); color: #6fdc8c; }
+  .chip.app { background: rgba(245,239,228,0.1); color: rgba(245,239,228,0.6); }
+  @media (max-width: 900px) { .flow-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .open-q { background: var(--paper-2); border-radius: 12px; padding: 24px 28px; margin-top: 28px; }
+  .open-q h4 { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .open-q li { font-size: 14px; color: var(--ink-3); line-height: 1.6; margin-left: 18px; margin-top: 6px; }
+
+  /* MAZE RESULTS */
+  .maze { margin-top: 36px; border: 1px solid rgba(26,26,26,0.1); border-radius: 12px; background: var(--paper); overflow: hidden; }
+  .maze-head { padding: 22px 24px 0; }
+  .maze-head h3 { font-size: 18px; font-weight: 600; color: var(--ink); }
+  .maze-head p { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+  .maze-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(26,26,26,0.08); margin-top: 18px; border-top: 1px solid rgba(26,26,26,0.08); border-bottom: 1px solid rgba(26,26,26,0.08); }
+  .maze-stats div { background: var(--paper); padding: 16px 20px; }
+  .maze-stats b { display: block; font-size: 26px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .maze-stats span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--hint); }
+  .maze img { display: block; width: 100%; }
+  @media (max-width: 600px) { .maze-stats { grid-template-columns: 1fr 1fr; } }
+
+  /* ===== VOICE PASS: calmer palette, no mono labels or italics ===== */
+  :root { --paper: #FBFAF7; --paper-2: #F4F1EA; --signal: #8A6D33; --mono: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif; --dark: #1E1D1B; }
+  body::before { display: none; }
+  body { background: var(--paper); }
+  nav.top { background: rgba(251,250,247,0.85); font-family: var(--sans); font-size: 14px; }
+  nav.top .logo { font-family: var(--sans); font-weight: 700; font-size: 20px; }
+  nav.top .back { font-family: var(--sans); font-size: 14px; }
+  .cs-meta { font-family: var(--sans); font-size: 14px; gap: 0; letter-spacing: 0; color: var(--muted); }
+  .cs-meta span::before { content: none; }
+  .cs-meta span + span::before { content: '\00B7'; color: var(--hint); margin: 0 10px; font-size: 14px; }
+  .cs-title em { font-style: normal; }
+  .cs-label, .outcome-label, .compare-tag, .old-shot figcaption b, .reg-row.head, .maze-stats span, .decision-label, .cs-next-label, .oj-step .oj-where, .flow-stage-head span, .api-map-head, .cs-callout .source, .cs-testimonial cite {
+    font-family: var(--sans) !important; text-transform: none !important; letter-spacing: 0 !important; }
+  .cs-label { font-size: 14px; font-weight: 600; color: var(--signal); margin-bottom: 10px; }
+  .cs-heading { font-family: var(--sans); font-style: normal; font-weight: 600; letter-spacing: -0.02em; }
+  .cs-detail-card h4, .cs-testimonial blockquote, .cs-next-title { font-style: normal; }
+  .cs-testimonial { background: var(--paper-2); }
+  .cs-testimonial blockquote { font-weight: 500; }
+  .cs-next { background: var(--dark); }
+  .cs-next-title { font-weight: 600; }
+  .cs-outcome { background: var(--dark); }
+  .outcome-num { color: #FF5B1F; font-weight: 600; }
+  .outcome-label { font-size: 14px; color: rgba(245,239,228,0.6); }
+  .cs-visual { background: var(--paper-2); }
+  .cs-compare, .cs-wide-image.dark-bg { background: var(--dark); }
+  .cs-wide-image.dark-bg .cs-label, .cs-compare .cs-label { color: #A0DFFF; }
+  .cs-callout { border-left-color: var(--signal); background: var(--paper-2); }
+  .cs-callout p:first-child { font-size: 17px; color: var(--ink); }
+  .compare-slider .compare-divider { background: #A0DFFF; box-shadow: none; }
+  .compare-slider .compare-handle { background: #A0DFFF; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+  .compare-slider .compare-handle::before { color: #1E1D1B; }
+  .compare-slider .tag-after { background: #A0DFFF; color: #1E1D1B; }
+  .compare-tag { font-size: 12px; }
+  .old-shot figcaption b { color: #A0DFFF; font-weight: 600; }
+  .oj-step .oj-where { font-size: 12px; font-weight: 600; }
+  .flow-stage-head span { font-size: 14px; font-weight: 600; color: #A0DFFF; }
+  .cs-compare .cs-text { color: rgba(245,239,228,0.65); }
+  .api-map { margin: 28px 0 0; border: 1px solid rgba(26,26,26,0.1); border-radius: 12px; background: #fff; overflow: hidden; }
+  .api-map-head { display: grid; grid-template-columns: 1fr 1.6fr; gap: 20px; padding: 12px 22px; background: var(--paper-2); font-size: 13px; font-weight: 600; color: var(--muted); }
+  .api-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 20px; padding: 14px 22px; border-top: 1px solid rgba(26,26,26,0.08); }
+  .api-row b { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .api-row p { font-size: 15px; color: var(--ink-3); line-height: 1.5; }
+  .reg-table, .maze { background: #fff; }
+  .reg-row.head { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .maze-stats div { background: #fff; }
+  .maze-stats span { font-size: 13px; color: var(--muted); }
+  .calls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 8px; }
+  .call h3 { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .call p { font-size: 16px; color: var(--ink-3); line-height: 1.65; }
+  @media (max-width: 700px) { .calls { grid-template-columns: 1fr; } .api-map-head, .api-row { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* PROJECT FACTS */
+  .cs-facts { margin: 8px 0 0; max-width: 720px; }
+  .cs-facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 18px 0; border-bottom: 1px solid rgba(26,26,26,0.1); }
+  .cs-facts dt { font-family: var(--sans); font-size: 16px; color: var(--ink); }
+  .cs-facts dd { margin: 0; font-family: var(--sans); font-size: 16px; color: var(--muted); text-align: right; }
+  @media (max-width: 560px) { .cs-facts div { flex-direction: column; gap: 4px; } .cs-facts dd { text-align: left; } }
+
+  /* PREVIEW: homepage green hero */
+  .cs-hero-band { background: #1D332E; color: #F5F1E8; }
+  .cs-hero-band .cs-meta { color: rgba(245, 241, 232, 0.68); }
+  .cs-hero-band .cs-title { color: #F5F1E8; }
+  .cs-hero-band .cs-lede { color: rgba(245, 241, 232, 0.68); }
+  .cs-hero-band .cs-facts div { border-bottom-color: rgba(245, 241, 232, 0.16); }
+  .cs-hero-band .cs-facts dt { color: #F5F1E8; }
+  .cs-hero-band .cs-facts dd { color: rgba(245, 241, 232, 0.68); }
+  nav.top { background: #1D332E; border-bottom-color: rgba(245, 241, 232, 0.12); }
+  nav.top .logo, nav.top .back { color: #F5F1E8; }
+  nav.top .back:hover { color: #fff; }
+
+  /* ===== LAYOUT SYSTEM: 1176px container for visuals, 680px column for reading ===== */
+  :root { --container: 1176px; --prose: 680px; --hint: #6E6D68; }
+  nav.top { padding-left: max(32px, calc((100% - var(--container)) / 2)); padding-right: max(32px, calc((100% - var(--container)) / 2)); }
+  .cs-hero, .cs-body { max-width: calc(var(--container) + 64px); }
+  .cs-facts { max-width: none; }
+  .cs-title { max-width: 18em; }
+  .cs-visual { max-width: calc(var(--container) + 96px); }
+  .cs-wide-image { max-width: calc(var(--container) + 64px); }
+  .cs-wide-image.dark-bg > div:first-child { max-width: var(--container) !important; text-align: left !important; }
+  .cs-wide-image.dark-bg > div:first-child > * { max-width: var(--prose); margin-left: 0 !important; margin-right: 0 !important; }
+  .cs-wide-image.dark-bg img, .old-shots { max-width: var(--container) !important; }
+  .cs-compare-inner, .cs-outcome-inner { max-width: var(--container); }
+  .cs-compare .cs-heading, .cs-compare .cs-text, .flow-stage > p, .cs-compare-inner > .cs-label { max-width: var(--prose); }
+  .cs-text p, .cs-lede, .cs-callout p, .call p { max-width: 34em; }
+  .cs-testimonial blockquote { max-width: var(--prose); }
+  .cs-detail-card p, .oj-step p, .reg-row p, .compare-side-item .side-desc, .trading-step p { font-size: 15px; line-height: 1.6; }
+  .flow-grid figcaption span, .trading-step p { font-size: 14px; }
+  .journey-step dt { color: rgba(245,239,228,0.62); }
+  @media (max-width: 768px) { nav.top { padding-left: 20px; padding-right: 20px; } }
+
+  /* cap every line of running text by characters, whatever its size */
+  .cs-hero p, .cs-body p, .cs-body li, .cs-compare p, .cs-wide-image p, .cs-decision p, .cs-outcome p, .cs-highlights-header p.cs-highlights-intro, blockquote { max-width: 34em; }
+  .old-shots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 760px) { .old-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 769px) { .cs-visual { padding-left: 48px; padding-right: 48px; } }
+
+  /* PROBLEM: text left, steps stacked right */
+  .problem-split { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 32px 56px; align-items: start; }
+  .problem-split .cs-text p { max-width: 38em; }
+  .problem-split .old-journey { flex-direction: column; flex-wrap: nowrap; gap: 12px; margin: 6px 0 0; padding-left: 24px; }
+  .problem-split .oj-step { flex: none; padding: 14px 16px; }
+  .problem-split .oj-step + .oj-step { margin: 0; }
+  .problem-split .oj-step + .oj-step::before { content: '\2192'; left: -20px; top: 50%; transform: translateY(-50%); }
+  @media (max-width: 900px) {
+    .problem-split { grid-template-columns: 1fr; }
+    .problem-split .old-journey { padding-left: 0; }
+    .problem-split .oj-step + .oj-step::before { content: none; }
+  }
+
+  /* problem steps: one card style, no connectors */
+  .oj-step, .oj-step.outside, .oj-step.drop { background: #fff; border: 1px solid rgba(26,26,26,0.1); }
+  .oj-step .oj-where, .oj-step.drop .oj-where { color: var(--muted); }
+  .oj-step + .oj-step::before, .problem-split .oj-step + .oj-step::before { content: none; }
+  .problem-split .old-journey { padding-left: 0; }
+
+  .flow-video { margin: 40px 0 8px; border-radius: 16px; overflow: hidden; background: #1E1D1B; aspect-ratio: 16 / 9; }
+  .flow-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .cs-visual .flow-video { margin: 0; }
+
+  /* TWO-COLUMN SECTIONS: copy left, evidence right */
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 56px; align-items: start; }
+  .split-copy .cs-text p { max-width: 36em; }
+  .split-side { display: flex; flex-direction: column; gap: 20px; padding-top: 34px; }
+  .split-side > * { margin: 0 !important; }
+  .split-side .cs-callout { border-radius: 0 12px 12px 0; padding: 26px 28px; }
+  .split-full { grid-column: 1 / -1; }
+  .split-full .maze { margin-top: 16px; }
+  .split .api-map-head, .split .api-row { grid-template-columns: 0.9fr 1.4fr; gap: 16px; }
+  .result-quote p:first-child { font-size: 19px; line-height: 1.5; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } .split-side { padding-top: 0; } }
+
+  .split-stack { grid-template-columns: 1fr; }
+  .split-stack .split-side { padding-top: 0; }
+  .split-stack .reg-table { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border: 0; background: none; border-radius: 0; overflow: visible; }
+  .split-stack .reg-row.head { display: none; }
+  .split-stack .reg-row { display: flex; flex-direction: column; gap: 8px; border: 1px solid rgba(26,26,26,0.1) !important; border-radius: 12px; background: #fff; padding: 20px 22px; }
+  .split-stack .reg-row h4 { font-size: 16px; }
+  .split .api-map-head { padding: 12px 20px; }
+  .split-copy { position: sticky; top: 96px; }
+  @media (max-width: 900px) { .split-stack .reg-table { grid-template-columns: 1fr; } .split-copy { position: static; } }
+
+  .split-copy { position: static; }
+  .split-sticky .split-copy { position: sticky; top: 96px; }
+  .test-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; margin: 0; border: 1px solid rgba(26,26,26,0.1); border-radius: 12px; overflow: hidden; }
+  .test-stats div { padding: 22px 24px; }
+  .maze-shot { margin: 8px 0 0; }
+  .maze-shot img { display: block; width: 100%; }
+
+  /* DARK SECTIONS: green (metrics band keeps its own colour) */
+  .cs-compare, .cs-wide-image.dark-bg, .cs-next, .v2-intro, .flow-video { background: #1D332E; }
+  /* section labels on light backgrounds */
+  .cs-body .cs-label, .cs-hero .cs-label { color: #1D332E; }
+
+  /* ===== PORTFOLIO THEME (shared with SaveInGold) ===== */
+  nav.top .logo .star { display: none; }
+  :root { --signal: #1D332E; }
+  .cs-hero-band, .cs-outcome, .cs-next, .cs-compare, .cs-wide-image.dark-bg, .cs-decision, nav.top { --signal: #A0DFFF; }
+  *, *::before, *::after { font-style: normal !important; text-transform: none !important; }
+  [class*="label"], [class*="num"], [class*="tag"], [class*="meta"], [class*="eyebrow"], .side-tag, .trading-step-num, .step-num { letter-spacing: 0 !important; }
+  [class*="label"], [class*="tag"], .side-tag, .trading-step-num { font-family: var(--sans) !important; }
+  .cs-body .cs-label, .cs-hero .cs-label { color: #1D332E; }
+  .cs-hero-band .cs-label, .cs-compare .cs-label, .cs-wide-image.dark-bg .cs-label { color: #A0DFFF; }
+  .cs-screens, .ds-showcase, .cs-highlights { --signal: #A0DFFF; }
+  .cs-screens .cs-label, .ds-showcase .cs-label, .cs-highlights .cs-label, .cs-screens-label { color: #A0DFFF !important; }
 </style>
 </head>
 <body>
 
 <nav class="top">
-  <a href="/" class="logo">Asim<span class="star">*</span></a>
+  <a href="/" class="logo">Asim</a>
   <a href="/#work" class="back">&larr; Back to work</a>
 </nav>
 
 <!-- ==================== HERO ==================== -->
+<div class="cs-hero-band">
 <div class="cs-hero">
   <div class="cs-meta">
-    <span>SaveInGold FZCO</span>
-    <span>Senior Product Designer</span>
-    <span>2024</span>
-    <span>FinTech &middot; Redesign</span>
+    <span>SaveInGold</span>
+    <span>Product Designer</span>
+    <span>2025</span>
   </div>
-  <h1 class="cs-title">Redesigning a gold trading app that was <em>losing</em> users at registration.</h1>
-  <p class="cs-lede">SaveInGold is a UAE-based fintech platform for digital gold investment. The existing app was redirecting users to an external browser for registration, causing a 42% drop-off. I redesigned the entire experience from registration to trading.</p>
+  <h1 class="cs-title">42% of people who tapped Register never came back.</h1>
+  <p class="cs-lede">SaveInGold is an app in the UAE for buying and holding real gold. When I joined, signing up sent you out of the app to a KYC website. This is how I brought it back inside, while stuck with a KYC API I couldn't change and the UAE's rules for gold dealers.</p>
+  <dl class="cs-facts">
+    <div><dt>Role</dt><dd>Product Designer</dd></div>
+    <div><dt>Project length</dt><dd>2025</dd></div>
+    <div><dt>What shipped</dt><dd>In-app sign-up and identity verification</dd></div>
+    <div><dt>Impact</dt><dd>42% less drop-off at registration</dd></div>
+  </dl>
+</div>
 </div>
 
 <!-- ==================== OUTCOMES ==================== -->
 <div class="cs-outcome">
   <div class="cs-outcome-inner">
-    <div class="outcome-stat">
-      <div class="outcome-num">42%</div>
-      <div class="outcome-label">reduction in drop-off</div>
-    </div>
-    <div class="outcome-stat">
-      <div class="outcome-num">8/8</div>
-      <div class="outcome-label">completed registration without friction</div>
-    </div>
-    <div class="outcome-stat">
-      <div class="outcome-num">Full</div>
-      <div class="outcome-label">end-to-end redesign</div>
-    </div>
+    <div class="outcome-stat"><div class="outcome-num">42%</div><div class="outcome-label">less drop-off at registration</div></div>
+    <div class="outcome-stat"><div class="outcome-num">8 / 8</div><div class="outcome-label">testers created an account alone</div></div>
+    <div class="outcome-stat"><div class="outcome-num">0</div><div class="outcome-label">times you leave the app</div></div>
   </div>
 </div>
 
-<!-- ==================== HERO IMAGE ==================== -->
 <div class="cs-visual">
-  <img src="images/Sig-Thumbnail.png" alt="SaveInGold app — welcome, dashboard, and trading screens">
+  <div class="flow-video">
+    <video src="videos/sig-onboarding.mp4?v=4" poster="videos/sig-onboarding-poster.jpg?v=4" autoplay muted loop playsinline preload="metadata" aria-label="Prototype walkthrough: from Get Started through identity checks to Verified"></video>
+  </div>
 </div>
 
-<!-- ==================== BODY ==================== -->
 <div class="cs-body">
 
-  <!-- THE PROBLEM -->
-  <div class="cs-section reveal">
-    <p class="cs-label">The Problem</p>
-    <h2 class="cs-heading">Users were dropping off before they even started</h2>
+  <div class="cs-section reveal problem-split">
+    <div class="problem-copy">
+    <p class="cs-label">Where people were leaving</p>
+    <h2 class="cs-heading">Register opened a browser.<br>Most people didn't follow it.</h2>
     <div class="cs-text">
-      <p>SaveInGold's registration relied on a <strong>third-party KYC provider</strong> that opened in an external browser. Users tapped "Register" inside the app and were suddenly redirected to a web form on an <strong>external domain</strong>, completely outside the native experience.</p>
-      <p>The result: confusion, broken trust, and a 42% registration drop-off rate. Users didn't know if they were still in the app or on a phishing page.</p>
+      <p>Our identity checks ran through a <strong>third-party KYC API</strong>. You tapped Register in the app and landed on their website, on their domain, with none of our branding. Six forms later you were supposed to find your own way back.</p>
+      <p>For an app asking people to trust it with their savings, it looked a lot like a phishing page. People treated it like one.</p>
     </div>
-  </div>
-
-  <!-- RESEARCH -->
-  <div class="cs-section reveal">
-    <p class="cs-label">Research</p>
-    <h2 class="cs-heading">What users were telling us</h2>
-    <div class="cs-text">
-      <p>Through user interviews and analytics review, three recurring pain points surfaced:</p>
     </div>
-    <div class="cs-callout">
-      <p>"I wasn't sure if I was still in the app or taken somewhere else."</p>
-      <p class="source"> — User interview, registration flow</p>
-    </div>
-    <div class="cs-callout">
-      <p>"There's too much going on. I just want to see my gold balance."</p>
-      <p class="source"> — User interview, dashboard feedback</p>
-    </div>
-    <div class="cs-callout">
-      <p>"It didn't feel secure enough to connect my bank account."</p>
-      <p class="source"> — User interview, trust perception</p>
-    </div>
-    <div class="cs-detail-grid" style="margin-top: 28px;">
-      <div class="cs-detail-card">
-        <h4>42% drop-off</h4>
-        <p>Users abandoned registration at the point of redirection to the external browser.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>41.5% support tickets</h4>
-        <p>Related to issues with account setup, registration, and card linking.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>90% under 30 seconds</h4>
-        <p>Users spent less than 30 seconds in the app, not engaging with core features.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>Cluttered interface</h4>
-        <p>The existing UI lacked visual hierarchy, making it hard to find key actions like balance and trading.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- GOALS -->
-  <div class="cs-section reveal">
-    <p class="cs-label">Design Goals</p>
-    <h2 class="cs-heading">What needed to change</h2>
-    <div class="cs-detail-grid">
-      <div class="cs-detail-card">
-        <h4>In-app registration</h4>
-        <p>Move the entire KYC and onboarding flow inside the app. No more external browser redirects.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>Simplified UX</h4>
-        <p>Strip away visual clutter. Make gold balance, trading, and account actions immediately scannable.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>Modern, trustworthy UI</h4>
-        <p>Design a premium interface that matches the seriousness of handling real money and gold assets.</p>
-      </div>
-      <div class="cs-detail-card">
-        <h4>Trading module</h4>
-        <p>Redesign the buy/sell gold experience with clear pricing, quantity inputs, and confirmation flows.</p>
-      </div>
+    <div class="old-journey" aria-label="The old registration journey">
+      <div class="oj-step"><p class="oj-where">In the app</p><p>Taps Register</p></div>
+      <div class="oj-step outside"><p class="oj-where">Browser</p><p>Lands on a site they don't recognise</p></div>
+      <div class="oj-step outside"><p class="oj-where">Browser</p><p>Six forms and two codes</p></div>
+      <div class="oj-step drop"><p class="oj-where">42% stop here</p><p>Never come back to the app</p></div>
     </div>
   </div>
 
 </div>
 
-<!-- ==================== COMPARISON: REGISTRATION ==================== -->
-<div class="cs-compare">
-  <div class="cs-compare-inner">
-    <p class="cs-label">Before &amp; After</p>
-    <h2 class="cs-heading">Registration: from external browser to in-app flow</h2>
-    <div class="cs-text">
-      <p>The biggest win. Users no longer leave the app to register. The old flow opened <strong>a third-party form in an external browser</strong>. The redesign keeps everything native, branded, and secure.</p>
-    </div>
-
-    <!-- Interactive slider -->
-    <div class="compare-wrapper">
-      <div class="compare-slider" data-compare>
-        <img class="compare-before" src="images/sig-old-reg-cropped.png" alt="Old external browser registration">
-        <img class="compare-after" src="images/Sign Up.png" alt="New in-app registration form">
-        <div class="compare-divider"></div>
-        <div class="compare-handle"></div>
-        <span class="compare-tag tag-before">Before</span>
-        <span class="compare-tag tag-after">After</span>
-      </div>
-    </div>
-
-    <!-- Side-by-side with descriptions -->
-    <div class="compare-side">
-      <div class="compare-side-item">
-        <span class="side-tag before">Before</span>
-        <img src="images/sig-old-reg-cropped.png" alt="Old registration — external browser form">
-        <p class="side-desc">Registration redirected to an external browser for KYC verification. Users lost context, trust, and most abandoned the process entirely.</p>
-      </div>
-      <div class="compare-side-item">
-        <span class="side-tag after">After</span>
-        <img src="images/Sign Up.png" alt="New registration — in-app native form">
-        <p class="side-desc">Fully native registration with branded UI, clear form labels, and biometric security setup, all without leaving the app.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== OLD REGISTRATION FLOW ==================== -->
 <div class="cs-wide-image dark-bg" style="margin-top: 0;">
   <div style="max-width: 860px; margin: 0 auto 32px; text-align: center;">
-    <p class="cs-label" style="color: var(--signal);">The Old Experience</p>
-    <h2 class="cs-heading" style="color: var(--paper); font-size: clamp(22px,2.5vw,30px);">What users had to go through externally</h2>
-    <p style="font-size: 15px; color: rgba(245,239,228,0.6); line-height: 1.6; max-width: 600px; margin: 0 auto;">Six external browser screens — basic info, financial info, declarations, email verification, 2FA, and OTP entry. All on a third-party domain. All outside the app.</p>
+    <p class="cs-label">What signing up looked like</p>
+    <h2 class="cs-heading" style="color: var(--paper); font-size: clamp(22px,2.5vw,30px);">Six screens, and none of them were ours</h2>
   </div>
   <div class="old-shots">
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-1.png" alt="Old registration in an external browser: basic information" loading="lazy"></div>
       <figcaption><b>01</b>Basic information</figcaption>
     </figure>
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-2.png" alt="Old registration in an external browser: financial information" loading="lazy"></div>
       <figcaption><b>02</b>Financial information</figcaption>
     </figure>
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-3.png" alt="Old registration in an external browser: declaration" loading="lazy"></div>
       <figcaption><b>03</b>Declaration</figcaption>
     </figure>
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-4.png" alt="Old registration in an external browser: email verification" loading="lazy"></div>
       <figcaption><b>04</b>Email verification</figcaption>
     </figure>
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-5.png" alt="Old registration in an external browser: two-factor authentication" loading="lazy"></div>
       <figcaption><b>05</b>Two-factor authentication</figcaption>
     </figure>
     <figure class="old-shot">
-      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.shuftipro.com</span></div>
+      <div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">External KYC website</span></div>
       <img src="images/sig-old-step-6.png" alt="Old registration in an external browser: code entry" loading="lazy"></div>
       <figcaption><b>06</b>Code entry</figcaption>
     </figure>
   </div>
 </div>
 
-<!-- ==================== USER FLOW ==================== -->
 <div class="cs-body">
-  <div class="cs-section reveal">
-    <p class="cs-label">User Flow</p>
-    <h2 class="cs-heading">Mapping the redesigned journey</h2>
+
+  <div class="cs-section reveal split">
+    <div class="split-copy">
+    <p class="cs-label">What people told us</p>
+    <h2 class="cs-heading">"Am I still in the app?"</h2>
+    
+    
     <div class="cs-text">
-      <p>I mapped the complete user journey from first launch through registration, KYC verification, and into the core trading experience, eliminating every external redirect along the way.</p>
+      <p>The numbers said the same thing. 42% dropped off at the redirect, and 41.5% of our support tickets were about setting up an account, registering or linking a card.</p>
+    </div>
+    </div>
+    <div class="split-side">
+    <div class="cs-callout">
+      <p>"I wasn't sure if I was still in the app or taken somewhere else."</p>
+      <p class="source">User interview</p>
+    </div>
+    <div class="cs-callout">
+      <p>"It didn't feel secure enough to connect my bank account."</p>
+      <p class="source">User interview</p>
+    </div>
     </div>
   </div>
-</div>
 
-<div class="cs-wide-image" style="margin-bottom: 48px;">
-  <img src="images/sig-userflow-diagram.jpg" alt="SaveInGold user flow diagram — registration to trading" style="background: #fff; padding: 24px; border-radius: 12px;">
-</div>
-
-<!-- ==================== WIREFRAMES ==================== -->
-<div class="cs-body">
-  <div class="cs-section reveal">
-    <p class="cs-label">Wireframes</p>
-    <h2 class="cs-heading">Exploring structure before polish</h2>
+  <div class="cs-section reveal split split-sticky">
+    <div class="split-copy">
+    <p class="cs-label">The catch</p>
+    <h2 class="cs-heading">I couldn't change the form</h2>
     <div class="cs-text">
-      <p>Before jumping into high-fidelity screens, I mapped out the core flows as wireframes: login, home dashboard, trading, and transfers. This helped validate layout decisions, information hierarchy, and interaction patterns early, without getting distracted by visual details.</p>
+      <p>Bringing sign-up into the app didn't mean I could design it however I liked. The KYC API still did the verification behind the scenes, and it wanted six stages, in this order, with its own validation rules.</p>
+      <p>My first version grouped things the way a new user would expect. Engineering showed me it wouldn't pass, so I threw it away and started again from the API. I kept its order and decided everything else: how much goes on each screen, and what kind of input each answer needs.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px;">
-      <img src="images/Login.png" alt="Wireframe — Login" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-      <img src="images/Home - Funds - New User.png" alt="Wireframe — Home dashboard" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-      <img src="images/Buying Trade - Default.png" alt="Wireframe — Buying trade" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-      <img src="images/Bank Transfer - Returning Users.png" alt="Wireframe — Bank transfer" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
     </div>
-  </div>
-</div>
-
-<!-- ==================== FULL REGISTRATION FLOW ==================== -->
-<div class="cs-wide-image dark-bg" style="padding-top: 80px;">
-  <div class="cs-section reveal" style="max-width: 1000px; margin: 0 auto 48px; padding: 0;">
-    <p class="cs-label">Registration Screens</p>
-    <h2 class="cs-heading" style="color: var(--paper);">Onboarding that builds confidence</h2>
-    <div class="cs-text" style="color: rgba(245,239,228,0.6);">
-      <p>The original registration pushed users to a third-party browser for identity verification, breaking context, losing brand trust, and causing a 40% drop-off before completion. I needed to bring the entire flow in-house without compromising on regulatory compliance.</p>
-      <p style="margin-top: 16px;">The redesigned flow keeps every step native: account creation, email verification, document upload, and KYC approval. Progressive disclosure breaks a complex process into manageable steps, reducing cognitive load while maintaining full compliance. The result: a registration experience that feels as simple as signing up for any consumer app, even though it meets financial-grade verification standards.</p>
+    <div class="split-side">
+    <div class="api-map" aria-label="The API's stages and where each one sits in the app">
+      <div class="api-map-head"><span>What the API needs</span><span>Where it lives in the app</span></div>
+      <div class="api-row"><b>Basic information</b><p>"About you", with title and name first, the way the API checks them</p></div>
+      <div class="api-row"><b>Financial information</b><p>"Money", where the API's fixed answers became dropdowns so nobody types something it rejects</p></div>
+      <div class="api-row"><b>Declaration</b><p>"Declarations", one tick for all four policies</p></div>
+      <div class="api-row"><b>Email verification</b><p>Done at sign-up and passed along, so there's no second code</p></div>
+      <div class="api-row"><b>Two-factor</b><p>"Phone number"</p></div>
+      <div class="api-row"><b>Code entry</b><p>"Verify your phone"</p></div>
+    </div>
     </div>
   </div>
-  <img src="images/saveingold-onboard-framed.png" alt="SaveInGold complete registration flow — 7 screens">
+
+  <div class="cs-section reveal split split-stack">
+    <div class="split-copy">
+    <p class="cs-label">The other catch</p>
+    <h2 class="cs-heading">The UAE rules for gold dealers</h2>
+    <div class="cs-text">
+      <p>UAE anti-money-laundering law treats gold dealers as high risk, and the data protection law is strict about consent. The API decided the order. These rules decided what I had to ask, and how.</p>
+    </div>
+    </div>
+    <div class="split-side">
+    <div class="reg-table">
+      <div class="reg-row head"><span>The rule</span><span>What it changed</span></div>
+      <div class="reg-row"><div><h4>Know exactly who the customer is</h4></div><p>Place of birth, a home address screen, and a screen to check the details read from your ID</p></div>
+      <div class="reg-row"><div><h4>Know where their money comes from</h4></div><p>Occupation, employer and source of funds</p></div>
+      <div class="reg-row"><div><h4>Know who's really behind the account</h4></div><p>Two questions: are you opening it for yourself, and do you hold a public position</p></div>
+      <div class="reg-row"><div><h4>Consent has to be a real choice</h4></div><p>The terms box starts unticked, and marketing is its own box</p></div>
+      <div class="reg-row"><div><h4>Face data is sensitive</h4></div><p>Separate consent before the selfie</p></div>
+      <div class="reg-row"><div><h4>Some checks take time</h4></div><p>An "under review" screen with a reminder</p></div>
+    </div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal">
+    <p class="cs-label">What I gave up</p>
+    <h2 class="cs-heading">Four calls I'd make again</h2>
+    <div class="calls">
+      <div class="call"><h3>Account first, the API's order after</h3><p>Following the API to the letter meant asking about someone's income before they even had an account. So you create the account first, then the API's stages run in order. It relies on the API accepting the email we already verified. If they don't, one small "confirm your email" screen comes back.</p></div>
+      <div class="call"><h3>A longer flow, told upfront</h3><p>The rules added an address screen and four more fields, and I couldn't cut them. Instead I tell people what they'll need and roughly how long it takes, and show a seven-step progress bar the whole way.</p></div>
+      <div class="call"><h3>Two extra taps for consent</h3><p>A pre-ticked box is smoother, but here it doesn't count as consent. Both the terms and the selfie consent start empty, and the selfie button waits for you.</p></div>
+      <div class="call"><h3>Good ideas left out</h3><p>Investment goals and US tax questions are normal in big fintech apps. The API's form had nowhere to put them, so they wait until compliance decides on FATCA or CRS.</p></div>
+    </div>
+  </div>
+
+  <div class="cs-section reveal split">
+    <div class="split-copy">
+    <p class="cs-label">Testing it</p>
+    <h2 class="cs-heading">Back to the same people</h2>
+    <div class="cs-text">
+      <p>When I interviewed people about the old flow, I asked if they'd try the redesign later, and they agreed. So the people testing the new version were the same ones who had told me what was broken.</p>
+      <p>I ran it on Maze, unmoderated, from the first screen to setting up Face ID. All 8 created an account without help.</p>
+    </div>
+    </div>
+    <div class="split-side">
+    <div class="maze-stats test-stats">
+        <div><b>8 / 8</b><span>Completed the task</span></div>
+        <div><b>0%</b><span>Dropped off</span></div>
+        <div><b>5.6%</b><span>Misclick rate</span></div>
+        <div><b>~4 min</b><span>Average time</span></div>
+      </div>
+    </div>
+    <div class="split-full">
+      <figure class="maze maze-shot"><img src="images/sig-v2/maze-account-task.webp" alt="Maze results: 100% success rate, 0% drop-off, 5.6% misclick rate, and every participant following the expected path from Get Started to Face ID" loading="lazy"></figure>
+    </div>
+  </div>
+
 </div>
 
-<!-- ==================== TRADING MODULE ==================== -->
-<div class="cs-compare" style="margin-top: 0;">
+<!-- ==================== NEW JOURNEY ==================== -->
+<div class="cs-compare">
   <div class="cs-compare-inner">
-    <p class="cs-label">Trading Module</p>
-    <h2 class="cs-heading">Buy and sell gold with clarity</h2>
-    <div class="cs-text">
-      <p>The trading interface was redesigned to give users <strong>clear pricing, real-time rates, and intuitive controls</strong>. The full flow, from market overview to order confirmation, guides users through each step with zero ambiguity about what they're buying, at what price, and what it costs.</p>
+    <p class="cs-label">The new flow</p>
+    <h2 class="cs-heading">From Get Started to verified, all inside the app</h2>
+
+    <div class="flow-stage">
+      <div class="flow-stage-head"><span>1</span><h3>Create the account</h3></div>
+      <p>Nothing about identity yet. Just enough to get in, so the harder questions come later.</p>
+      <div class="flow-grid">
+        <figure>
+          <img src="images/sig-v2/01-get-started.jpg" alt="Get started" loading="lazy">
+          <figcaption><b>Get started</b><span>Real gold, any amount, delivered if you want it. That is the whole pitch.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/02-create-account.jpg" alt="Create account" loading="lazy">
+          <figcaption><b>Create account</b><span>Email and password. You tick the terms yourself, and marketing is a separate box.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/03-verify-email.jpg" alt="Verify email" loading="lazy">
+          <figcaption><b>Verify email</b><span>Done once here. The app hands it to the API later, so nobody gets asked twice.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/06-intro.jpg" alt="What you'll need" loading="lazy">
+          <figcaption><b>What you'll need</b><span>Six things, about five minutes, and why we have to ask.</span></figcaption>
+        </figure>
+      </div>
     </div>
 
-    <div class="trading-flow">
-      <div class="trading-step">
-        <div class="trading-step-num">01</div>
-        <img src="images/Trade - Gold.png" alt="Trading module — market price overview">
-        <h4>Market Overview</h4>
-        <p>Live gold and silver prices at a glance. One tap to start trading. No clutter, just the information that matters.</p>
+    <div class="flow-stage">
+      <div class="flow-stage-head"><span>2</span><h3>Verify identity</h3></div>
+      <p>The API's stages, in the API's order, plus what the UAE rules add.</p>
+      <div class="flow-grid">
+        <figure>
+          <img src="images/sig-v2/07-basic-info.jpg" alt="About you" loading="lazy">
+          <figcaption><b>About you</b><span>Same fields and order as the API. Place of birth is back because the rules list it.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/08-address.jpg" alt="Home address" loading="lazy">
+          <figcaption><b>Home address</b><span>The API has no field for this, so our backend keeps it.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/09-financial.jpg" alt="Money" loading="lazy">
+          <figcaption><b>Money</b><span>The API's fixed lists as dropdowns, plus occupation and source of funds.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/10-declarations.jpg" alt="Declarations" loading="lazy">
+          <figcaption><b>Declarations</b><span>Two quick questions, then the four policies you agree to.</span></figcaption>
+        </figure>
       </div>
-      <div class="trading-step">
-        <div class="trading-step-num">02</div>
-        <img src="images/Trade Started - Gold.png" alt="Trading module — order entry with pricing">
-        <h4>Place Your Order</h4>
-        <p>Selling and buying prices displayed side by side. Enter amount in grams or AED, toggle limit pricing, and confirm, all on one screen.</p>
+    </div>
+
+    <div class="flow-stage">
+      <div class="flow-stage-head"><span>3</span><h3>Phone, ID and selfie</h3></div>
+      <p>The last checks before an account can trade.</p>
+      <div class="flow-grid">
+        <figure>
+          <img src="images/sig-v2/11-phone.jpg" alt="Phone number" loading="lazy">
+          <figcaption><b>Phone number</b><span>The API's two-factor step sits exactly where it wants to be.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/14-scan-id.jpg" alt="Scan ID" loading="lazy">
+          <figcaption><b>Scan ID</b><span>A camera frame with live hints. It still sends the API a normal photo.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/15-check-id.jpg" alt="Check the details" loading="lazy">
+          <figcaption><b>Check the details</b><span>You see what we read from your ID and fix it before it fails a check.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/16-selfie.jpg" alt="Selfie" loading="lazy">
+          <figcaption><b>Selfie</b><span>Face data needs its own consent. The button stays off until you give it.</span></figcaption>
+        </figure>
       </div>
-      <div class="trading-step">
-        <div class="trading-step-num">03</div>
-        <img src="images/Trade - popup.png" alt="Trading module — confirm trade details">
-        <h4>Confirm Trade</h4>
-        <p>A clear review modal before execution. Order type, amount, target price, and estimated total. Nothing hidden, nothing ambiguous.</p>
+    </div>
+
+    <div class="flow-stage">
+      <div class="flow-stage-head"><span>4</span><h3>Lock it and finish</h3></div>
+      <p>The parts the app owns, and a clear answer at the end.</p>
+      <div class="flow-grid">
+        <figure>
+          <img src="images/sig-v2/04-passcode.jpg" alt="Passcode" loading="lazy">
+          <figcaption><b>Passcode</b><span>A backup for when Face ID does not work.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/05-face-id.jpg" alt="Face ID" loading="lazy">
+          <figcaption><b>Face ID</b><span>The main way in from day one.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/18-verified.jpg" alt="Verified" loading="lazy">
+          <figcaption><b>Verified</b><span>One next step: add funds.</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/sig-v2/19-under-review.jpg" alt="Under review" loading="lazy">
+          <figcaption><b>Under review</b><span>Some checks take a day. You see where you are and turn on a reminder.</span></figcaption>
+        </figure>
       </div>
-      <div class="trading-step">
-        <div class="trading-step-num">04</div>
-        <img src="images/Sig - Order-placed.png" alt="Trading module — order placed confirmation">
-        <h4>Order Placed</h4>
-        <p>Full order summary with ID, timestamp, trade type, and total. Users know exactly what happened and what to expect next.</p>
+    </div>
+
+    <div class="cs-text" style="margin-top: 72px;">
+      <p>Drag to compare the old browser form with the new screen.</p>
+    </div>
+    <div class="compare-wrapper">
+      <div class="compare-slider" data-compare>
+        <img class="compare-before" src="images/sig-old-reg-cropped.png" alt="Old external browser registration">
+        <img class="compare-after" src="images/sig-v2/02-create-account.jpg" alt="New in-app create account screen">
+        <div class="compare-divider"></div>
+        <div class="compare-handle"></div>
+        <span class="compare-tag tag-before">Before</span>
+        <span class="compare-tag tag-after">After</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ==================== DESIGN DECISIONS ==================== -->
 <div class="cs-body">
-  <div class="cs-section reveal">
-    <p class="cs-label">Constraints</p>
-    <h2 class="cs-heading">What pushed back</h2>
+  <div class="cs-section reveal split">
+    <div class="split-copy">
+    <p class="cs-label">After launch</p>
+    <h2 class="cs-heading">What changed</h2>
     <div class="cs-text">
-      <p>The KYC provider's API had rigid field requirements that couldn't be changed on our side. My first attempt at a streamlined registration form had to be scrapped because the provider required fields in a specific order with exact validation rules. I had to work backward from their technical constraints to design a flow that <strong>felt</strong> simple while still satisfying every compliance requirement under the hood.</p>
+      <p>We compared the first 30 days after launch with the old browser flow. Drop-off at registration fell by <strong>42%</strong>, and support tickets about account setup went down with it.</p>
+      <p>The bit I'm proudest of is quieter. Nobody in testing asked where they were.</p>
+    </div>
+    </div>
+    <div class="split-side">
+    <figure class="cs-callout result-quote"><p>"Asim transformed our app from a confusing, fragmented experience into something our users actually trust with their money."</p><p class="source">Amro Jabar · COO, SaveInGold</p></figure>
     </div>
   </div>
-
-  <div class="cs-section reveal">
-    <p class="cs-label">Design Decisions</p>
-    <h2 class="cs-heading">What I chose, and why</h2>
-
-    <div class="cs-decision">
-      <p class="decision-label">Decision 1: Kill the redirect</p>
-      <p>The single highest-impact change. By moving registration in-app, I eliminated the trust gap that caused 42% of users to abandon. No external browser, no unfamiliar domain, no confusion.</p>
-    </div>
-
-    <div class="cs-decision">
-      <p class="decision-label">Decision 2: Dark UI with gold accents</p>
-      <p>A dark interface with warm gold tones reinforces the premium nature of gold trading. It also reduces visual noise in data-dense screens like the trading module and portfolio view.</p>
-    </div>
-
-    <div class="cs-decision">
-      <p class="decision-label">Decision 3: Biometric-first security</p>
-      <p>Face ID and fingerprint login were designed as the primary authentication path, not an afterthought. Users handling real money need to feel secure without friction.</p>
-    </div>
-  </div>
-
-  <!-- RESULTS -->
-  <div class="cs-section reveal">
-    <p class="cs-label">Results</p>
-    <h2 class="cs-heading">The numbers after launch</h2>
-    <div class="cs-text">
-      <p>After launching the redesigned app, SaveInGold saw a <strong>42% reduction in registration drop-off</strong>, measured by comparing completion rates in the old external-browser flow against the new native flow over the first 30 days post-launch. Support tickets related to account setup declined significantly.</p>
-      <p>In usability testing, <strong>all 8 participants</strong> (mix of existing users and new signups) completed registration without assistance or hesitation. No one asked where they were, no one dropped off, and no one needed to restart. Users could now register, verify their identity, and start trading gold without ever leaving the app.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== TESTIMONIAL ==================== -->
-<div class="cs-testimonial">
-  <blockquote>"Asim transformed our app from a confusing, fragmented experience into something our users actually trust with their money."</blockquote>
-  <cite>Amro Jabar · COO, SaveInGold</cite>
 </div>
 
 <!-- ==================== NEXT PROJECT ==================== -->
 <div class="cs-next">
   <p class="cs-next-label">Next project</p>
   <a href="casestudy-mena.html">
-    <p class="cs-next-title">MENA Capital — Trading Platform &rarr;</p>
+    <p class="cs-next-title">MENA Capital trading platform &rarr;</p>
   </a>
 </div>
 
@@ -663,5 +945,11 @@
   });
 </script>
 
+<script>
+(function () {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+})();
+</script>
 </body>
 </html>

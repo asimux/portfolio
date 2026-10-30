@@ -103,6 +103,44 @@
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 768px) { .cs-hero { padding: 120px 20px 60px; } .cs-body { padding: 60px 20px; } nav.top { padding: 14px 20px; } }
+
+  /* PREVIEW: homepage green hero */
+  .cs-hero-band { background: #1D332E; color: #F5F1E8; }
+  .cs-hero-band .cs-meta { color: rgba(245, 241, 232, 0.68); }
+  .cs-hero-band .cs-title { color: #F5F1E8; }
+  .cs-hero-band .cs-lede { color: rgba(245, 241, 232, 0.68); }
+  nav.top { background: #1D332E; border-bottom-color: rgba(245, 241, 232, 0.12); }
+  nav.top .logo, nav.top .back { color: #F5F1E8; }
+  nav.top .back:hover { color: #fff; }
+
+  /* ===== LAYOUT SYSTEM: 1176px container for visuals, 680px column for reading ===== */
+  :root { --container: 1176px; --prose: 680px; --hint: #6E6D68; }
+  nav.top { padding-left: max(32px, calc((100% - var(--container)) / 2)); padding-right: max(32px, calc((100% - var(--container)) / 2)); }
+  .cs-hero, .cs-body { max-width: calc(var(--container) + 64px); }
+  .cs-facts { max-width: none; }
+  .cs-title { max-width: 18em; }
+  .cs-visual { max-width: calc(var(--container) + 96px); }
+  .cs-wide-image { max-width: calc(var(--container) + 64px); }
+  .cs-wide-image.dark-bg > div:first-child { max-width: var(--container) !important; text-align: left !important; }
+  .cs-wide-image.dark-bg > div:first-child > * { max-width: var(--prose); margin-left: 0 !important; margin-right: 0 !important; }
+  .cs-wide-image.dark-bg img, .old-shots { max-width: var(--container) !important; }
+  .cs-compare-inner, .cs-outcome-inner { max-width: var(--container); }
+  .cs-compare .cs-heading, .cs-compare .cs-text, .flow-stage > p, .cs-compare-inner > .cs-label { max-width: var(--prose); }
+  .cs-text p, .cs-lede, .cs-callout p, .call p { max-width: 34em; }
+  .cs-testimonial blockquote { max-width: var(--prose); }
+  .cs-detail-card p, .oj-step p, .reg-row p, .compare-side-item .side-desc, .trading-step p { font-size: 15px; line-height: 1.6; }
+  .flow-grid figcaption span, .trading-step p { font-size: 14px; }
+  .journey-step dt { color: rgba(245,239,228,0.62); }
+  @media (max-width: 768px) { nav.top { padding-left: 20px; padding-right: 20px; } }
+
+  /* cap every line of running text by characters, whatever its size */
+  .cs-hero p, .cs-body p, .cs-body li, .cs-compare p, .cs-wide-image p, .cs-decision p, .cs-outcome p, .cs-highlights-header p.cs-highlights-intro, blockquote { max-width: 34em; }
+  .old-shots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 760px) { .old-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 769px) { .cs-visual { padding-left: 48px; padding-right: 48px; } }
+
+  /* DARK SECTIONS: green (metrics band keeps its own colour) */
+  .cs-compare, .cs-wide-image.dark-bg, .cs-next, .v2-intro, .flow-video { background: #1D332E; }
 </style>
 </head>
 <body>
@@ -112,6 +150,7 @@
   <a href="/#work" class="back">← Back to work</a>
 </nav>
 
+<div class="cs-hero-band">
 <div class="cs-hero">
   <div class="cs-meta">
     <span>Faroo</span>
@@ -121,6 +160,7 @@
   </div>
   <h1 class="cs-title">Booking a groomer took <em>11 steps</em>. We cut it to five.</h1>
   <p class="cs-lede">Faroo connects pet owners with professional groomers. The original app had serious friction — a complicated booking flow, zero pricing transparency, and no review system. I redesigned it from the ground up, focusing on trust and simplicity for both sides of the marketplace.</p>
+</div>
 </div>
 
 <div class="cs-outcome">

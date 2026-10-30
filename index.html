@@ -11,1909 +11,210 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asim — Product Designer</title>
-<meta name="description" content="Product designer with 4+ years of experience designing fintech platforms, B2B dashboards, and consumer apps.">
-<meta property="og:title" content="Asim — Product Designer">
-<meta property="og:description" content="Product designer with 4+ years of experience designing fintech platforms, B2B dashboards, and consumer apps.">
+<title>Asim, Product Designer</title>
+<meta name="description" content="Product designer in London with 4+ years designing fintech platforms, B2B dashboards and consumer apps.">
+<meta property="og:title" content="Asim, Product Designer">
+<meta property="og:description" content="Product designer in London with 4+ years designing fintech platforms, B2B dashboards and consumer apps.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://masim.design">
 <meta property="og:image" content="https://masim.design/images/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Asim — Product Designer">
-<meta name="twitter:description" content="Product designer with 4+ years of experience designing fintech platforms, B2B dashboards, and consumer apps.">
+<meta name="twitter:title" content="Asim, Product Designer">
+<meta name="twitter:description" content="Product designer in London with 4+ years designing fintech platforms, B2B dashboards and consumer apps.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
-<style>
-  @font-face {
-    font-family: 'Acorn';
-    src: url('fonts/acorn-7.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  :root {
-    --paper: #F5EFE4;
-    --paper-2: #EDE5D2;
-    --sand: #E8DFCB;
-    --ink: #1A1A1A;
-    --ink-2: #2C2C2A;
-    --ink-3: #444441;
-    --muted: #5F5E5A;
-    --hint: #888780;
-    --signal: #FF5B1F;
-    --signal-deep: #C2421A;
-    --deep: #2D5F4F;
-    --hero: 'Acorn', 'Georgia', serif;
-    --serif: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
-    --sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
-    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-    --pixel: 'VT323', monospace;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 17px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-  }
-  a { color: inherit; text-decoration: none; }
-  button { cursor: pointer; font-family: inherit; }
-  ::selection { background: var(--signal); color: #fff; }
-
-  /* GRAIN */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.06;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* GRADIENT BLOBS */
-  .gradient-canvas {
-    position: absolute;
-    top: 0;
-    right: -10%;
-    width: 75%;
-    height: 110vh;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    filter: blur(0.5px);
-  }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    will-change: transform;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-  .blob-1 {
-    width: 700px; height: 700px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 91, 31, 0.6) 0%, rgba(255, 91, 31, 0.15) 40%, transparent 70%);
-    top: 20%; right: 15%;
-    animation: floatBlob1 18s ease-in-out infinite, blobIn 1.5s ease 0.3s forwards;
-  }
-  .blob-2 {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle at 50% 50%, rgba(45, 95, 79, 0.5) 0%, rgba(45, 95, 79, 0.12) 40%, transparent 70%);
-    top: 5%; right: -5%;
-    animation: floatBlob2 22s ease-in-out infinite, blobIn 1.5s ease 0.5s forwards;
-  }
-  .blob-3 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 200, 100, 0.4) 0%, rgba(255, 200, 100, 0.1) 40%, transparent 70%);
-    top: 45%; right: 30%;
-    animation: floatBlob3 25s ease-in-out infinite, blobIn 1.5s ease 0.7s forwards;
-  }
-  @keyframes blobIn { to { opacity: 1; } }
-  @keyframes floatBlob1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-40px, 30px) scale(1.05); }
-    66% { transform: translate(30px, -40px) scale(0.95); }
-  }
-  @keyframes floatBlob2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-50px, 50px) scale(1.08); }
-  }
-  @keyframes floatBlob3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(50px, -30px) scale(1.1); }
-    66% { transform: translate(-30px, 40px) scale(0.92); }
-  }
-
-  @media (max-width: 768px) {
-    .gradient-canvas {
-      width: 100%;
-      right: -20%;
-      filter: blur(2px);
-    }
-    .blob {
-      filter: blur(120px);
-    }
-    .blob-1 { width: 350px; height: 350px; }
-    .blob-2 { width: 300px; height: 300px; }
-    .blob-3 { width: 250px; height: 250px; }
-  }
-
-  /* NAV */
-  nav.top {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 18px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-2);
-    background: rgba(245, 239, 228, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid rgba(26,26,26,0.08);
-  }
-  nav.top .logo {
-    font-family: var(--hero);
-    font-size: 22px;
-    font-style: normal;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  nav.top .logo .star { color: var(--signal); font-style: normal; }
-  nav.top .links { display: flex; gap: 32px; align-items: center; }
-  nav.top .links a {
-    transition: color 0.2s ease;
-    letter-spacing: 0.02em;
-  }
-  nav.top .links a:hover { color: var(--signal); }
-  nav.top .status {
-    display: flex; gap: 8px; align-items: center;
-    letter-spacing: 0.02em;
-  }
-  nav.top .status .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #2D8B4E;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  @media (max-width: 768px) {
-    nav.top { padding: 14px 20px; }
-    nav.top .links { display: none; }
-  }
-
-  /* HERO */
-  section.hero {
-    padding: 140px 32px 80px;
-    max-width: 1280px;
-    margin: 0 auto;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 2;
-  }
-
-  .hero-meta {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 36px;
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    letter-spacing: 0.02em;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.2s forwards;
-  }
-  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
-  .hero-meta span::before {
-    content: '◆';
-    color: var(--signal);
-    font-size: 8px;
-  }
-
-  h1.hero-headline {
-    font-family: var(--hero);
-    font-size: clamp(44px, 7vw, 96px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 20px;
-    max-width: 100%;
-    position: relative;
-  }
-  h1.hero-headline .line { display: block; overflow: hidden; padding-bottom: 0.15em; margin-bottom: -0.15em; }
-  h1.hero-headline .line span {
-    display: inline-block;
-    transform: translateY(110%);
-    animation: lineUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-  h1.hero-headline .line:nth-child(1) span { animation-delay: 0.3s; }
-  h1.hero-headline .line:nth-child(2) span { animation-delay: 0.45s; }
-  h1.hero-headline .line:nth-child(3) span { animation-delay: 0.6s; }
-
-  h1.hero-headline em {
-    font-style: italic;
-    color: var(--signal);
-    position: relative;
-    display: inline-block;
-  }
-  h1.hero-headline em::before {
-    content: '';
-    position: absolute;
-    bottom: 6%;
-    left: -2%;
-    width: 104%;
-    height: 8px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' fill='none'><path d='M2 5 Q 50 2 100 4 T 200 4 T 300 5 T 398 4' stroke='%23FF5B1F' stroke-width='2' stroke-linecap='round' fill='none' opacity='0.7'/></svg>");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    opacity: 0;
-    animation: scribble 0.7s ease 1.5s forwards;
-  }
-  h1.hero-headline .period { color: var(--signal); }
-  h1.hero-headline .thin {
-    font-weight: 400;
-    color: var(--ink-3);
-    font-size: 0.55em;
-    letter-spacing: -0.01em;
-    vertical-align: baseline;
-    font-style: normal;
-    font-family: var(--sans);
-  }
-  @keyframes scribble {
-    from { opacity: 0; transform: scaleX(0); transform-origin: left; }
-    to { opacity: 1; transform: scaleX(1); }
-  }
-
-  /* proof strip — sits between headline and sub */
-  .hero-proof {
-    display: flex;
-    gap: 40px;
-    margin: 40px 0 36px;
-    padding: 24px 0;
-    border-top: 1px solid rgba(26,26,26,0.08);
-    border-bottom: 1px solid rgba(26,26,26,0.08);
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.8s forwards;
-  }
-  .proof-item {}
-  .proof-num {
-    font-family: var(--serif);
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .proof-num .signal { color: var(--signal); }
-  .proof-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--hint);
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-
-  .hero-sub {
-    font-size: clamp(17px, 1.4vw, 20px);
-    color: var(--ink-3);
-    max-width: 600px;
-    line-height: 1.6;
-    margin-bottom: 0;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.95s forwards;
-  }
-  .hero-sub strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .hero-cta-row {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 1.05s forwards;
-  }
-
-  /* PROMPT BAR */
-  .hero-prompt-wrap {
-    margin-top: 32px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 1s forwards;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  .hero-prompt {
-    display: flex;
-    align-items: center;
-    background: var(--ink);
-    border-radius: 999px;
-    padding: 6px 6px 6px 24px;
-    width: 100%;
-    max-width: 620px;
-    gap: 12px;
-  }
-  .hero-prompt input {
-    flex: 1;
-    background: none;
-    border: none;
-    outline: none;
-    font-family: var(--sans);
-    font-size: 15px;
-    color: var(--paper);
-    caret-color: var(--signal);
-  }
-  .hero-prompt input::placeholder {
-    color: rgba(245, 239, 228, 0.704);
-  }
-  .hero-prompt-send {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--signal);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-  .hero-prompt-send:hover {
-    transform: scale(1.08);
-    background: var(--signal-deep);
-  }
-  .hero-prompt-send svg {
-    width: 18px;
-    height: 18px;
-    fill: #fff;
-  }
-  .hero-suggestions {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 1.15s forwards;
-  }
-  .hero-suggestion {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(26,26,26,0.12);
-    background: var(--paper);
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--ink-3);
-    transition: border-color 0.2s, color 0.2s, background 0.2s, opacity 0.2s;
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-  }
-  .hero-suggestion:hover {
-    border-color: var(--signal);
-    color: var(--ink);
-    background: var(--paper-2);
-  }
-  .hero-suggestion .sug-icon {
-    font-size: 14px;
-  }
-
-  .hero-response {
-    margin-top: 16px;
-    width: 100%;
-    max-width: 620px;
-    min-height: 0;
-    overflow: hidden;
-    transition: min-height 0.3s ease;
-  }
-  .hero-response-inner {
-    background: var(--ink);
-    border-radius: 16px;
-    padding: 20px 24px;
-    color: var(--paper);
-    font-size: 14px;
-    line-height: 1.6;
-    font-family: var(--sans);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .hero-response-inner.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hero-response-inner .response-text {
-    min-height: 1.6em;
-  }
-  .hero-response-inner .response-cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--signal);
-    margin-left: 2px;
-    vertical-align: text-bottom;
-    animation: blink-cursor 0.6s steps(1) infinite;
-  }
-  @keyframes blink-cursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  .hero-response-inner .response-action {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: var(--signal);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s, background 0.2s ease;
-    cursor: pointer;
-  }
-  .hero-response-inner .response-action.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hero-response-inner .response-action:hover {
-    background: var(--signal-deep);
-  }
-  .hero-suggestion:active {
-    transform: scale(0.96);
-  }
-
-  @media (max-width: 768px) {
-    .hero-prompt { max-width: 100%; padding: 6px 6px 6px 20px; }
-    .hero-response { max-width: 100%; }
-    .hero-suggestions { gap: 8px; }
-  }
-  .btn-primary {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 14px 26px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background 0.25s ease, transform 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    letter-spacing: 0.01em;
-  }
-  .btn-primary .arrow { transition: transform 0.25s ease; display: inline-block; }
-  .btn-primary:hover { background: var(--signal); transform: translateY(-2px); }
-  .btn-primary:hover .arrow { transform: translateX(4px); }
-
-  .btn-secondary {
-    color: var(--ink);
-    padding: 14px 8px;
-    font-size: 13px;
-    font-family: var(--mono);
-    letter-spacing: 0.04em;
-    transition: color 0.2s ease;
-    background: transparent;
-    border: none;
-  }
-  .btn-secondary:hover { color: var(--signal); }
-
-  .hero-ticker {
-    position: absolute;
-    bottom: 60px;
-    left: 32px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    letter-spacing: 0.02em;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 1.2s forwards;
-    max-width: 380px;
-    z-index: 5;
-  }
-  .hero-ticker::before { content: '▸'; color: var(--signal); flex-shrink: 0; }
-  .ticker-text {
-    position: relative;
-    height: 16px;
-    overflow: hidden;
-    flex: 1;
-  }
-  .ticker-text span {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: translateY(8px);
-    white-space: nowrap;
-  }
-  .ticker-text span.active { opacity: 1; transform: translateY(0); }
-  .ticker-text span.exit { opacity: 0; transform: translateY(-8px); }
-
-  /* ──────────────────────────────────────────
-     MARQUEE STRIP — black band of running text
-     ────────────────────────────────────────── */
-  section.marquee {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 28px 0;
-    overflow: hidden;
-    border-top: 0.5px solid rgba(245,239,228,0.08);
-    border-bottom: 0.5px solid rgba(245,239,228,0.08);
-    position: relative;
-    z-index: 3;
-    /* Slight rotation for that Strokes/lo-fi feel — comment out if too much */
-    /* transform: rotate(-1deg); margin: 0 -2vw; */
-  }
-
-  .marquee-track {
-    display: flex;
-    gap: 0;
-    white-space: nowrap;
-    width: max-content;
-    animation: marqueeScroll 40s linear infinite;
-    will-change: transform;
-  }
-
-  .marquee-track:hover {
-    animation-play-state: paused;
-  }
-
-  .marquee-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 48px;
-    padding: 0 24px;
-    font-family: var(--serif);
-    font-size: clamp(36px, 4.5vw, 56px);
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    font-weight: 400;
-  }
-  .marquee-item .star {
-    color: var(--signal);
-    font-style: normal;
-    font-size: 0.7em;
-    transform: translateY(-0.1em);
-  }
-  .marquee-item .accent {
-    color: var(--signal);
-  }
-
-  @keyframes marqueeScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  @media (max-width: 768px) {
-    section.hero { padding: 110px 20px 60px; }
-    .hero-ticker {
-      position: relative;
-      bottom: auto; left: auto;
-      margin-top: 48px;
-      max-width: none;
-    }
-    .hero-meta { gap: 14px; font-size: 11px; }
-    section.marquee { padding: 20px 0; }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes lineUp { to { transform: translateY(0); } }
-
-  .preview-banner {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-family: var(--mono);
-    font-size: 11px;
-    z-index: 200;
-    letter-spacing: 0.02em;
-    pointer-events: none;
-  }
-  .preview-banner span { color: var(--signal); }
-
-  /* ──────────────────────────────────────────
-     SELECTED WORK
-     ────────────────────────────────────────── */
-  section.work {
-    background: #1D332E;
-    position: relative;
-    z-index: 2;
-    padding: 100px 32px 120px;
-  }
-  section.work .section-label { color: rgba(245,239,228,0.65); }
-  section.work .section-title { color: var(--paper); }
-  section.work .section-title em { color: var(--signal); }
-  .work-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--hint);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 64px;
-  }
-  .section-title em { font-style: italic; color: var(--signal); font-weight: 500; }
-
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .project-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--paper);
-    border-radius: 16px;
-    text-decoration: none;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(26,26,26,0.12);
-  }
-  .project-card:hover .project-thumb img {
-    transform: scale(1.04);
-  }
-  .project-card:hover .project-arrow { opacity: 1; transform: translateX(0); color: var(--signal); }
-
-  .project-thumb {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: var(--ink);
-    border-radius: 16px 16px 0 0;
-  }
-  .project-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    display: block;
-  }
-  .project-thumb .project-num {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: #fff;
-    background: rgba(26,26,26,0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 4px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.04em;
-    z-index: 2;
-  }
-  .project-thumb .project-metric {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background: rgba(26,26,26,0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 8px 14px;
-    border-radius: 12px;
-    z-index: 2;
-  }
-  .project-thumb .project-metric .num {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--signal);
-    letter-spacing: -0.02em;
-  }
-  .project-thumb .project-metric .label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.6);
-    margin-top: 2px;
-  }
-
-  .project-body {
-    padding: 24px 24px 28px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .project-company {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-    transition: color 0.3s ease;
-  }
-  .project-name {
-    font-family: var(--serif);
-    font-size: clamp(22px, 2.2vw, 28px);
-    font-weight: 600;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 8px;
-    transition: color 0.3s ease;
-  }
-  .project-hook {
-    font-size: 14px;
-    color: var(--ink-3);
-    line-height: 1.55;
-    transition: color 0.3s ease;
-    flex: 1;
-  }
-  .project-tags {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .project-tags span {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    padding: 4px 10px;
-    border: 1px solid rgba(26,26,26,0.12);
-    border-radius: 999px;
-    color: var(--muted);
-    transition: all 0.3s ease;
-  }
-  .project-arrow {
-    font-size: 18px;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s ease;
-    margin-left: auto;
-    color: var(--ink);
-  }
-
-  /* MENA placeholder */
-  .mena-placeholder {
-    background: linear-gradient(145deg, #1a2332 0%, #1e3a2f 50%, #2D5F4F 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mena-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    width: 60%;
-    max-width: 300px;
-    opacity: 0.25;
-  }
-  .mena-block {
-    background: rgba(245,239,228,0.5);
-    border-radius: 6px;
-    height: 48px;
-  }
-  .mena-block.wide {
-    grid-column: span 2;
-  }
-
-  .project-card--wide {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: unset;
-  }
-  .project-card--wide .project-thumb {
-    aspect-ratio: unset;
-    min-height: 320px;
-    border-radius: 16px 0 0 16px;
-  }
-  .project-card--wide .project-body {
-    padding: 40px 40px;
-    justify-content: center;
-  }
-
-  @media (max-width: 900px) {
-    .project-grid {
-      grid-template-columns: 1fr;
-    }
-    .project-card--wide {
-      grid-template-columns: 1fr;
-    }
-    .project-card--wide .project-thumb {
-      aspect-ratio: 16 / 10;
-      min-height: unset;
-      border-radius: 16px 16px 0 0;
-    }
-  }
-
-  /* ──────────────────────────────────────────
-     STATS BAND
-     ────────────────────────────────────────── */
-  section.stats {
-    background: var(--deep);
-    padding: 56px 32px;
-    position: relative;
-    z-index: 2;
-  }
-  .stats-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-  }
-  .stat-item { text-align: center; }
-  .stat-num {
-    font-family: var(--serif);
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.06em;
-    margin-top: 8px;
-  }
-  @media (max-width: 600px) {
-    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  }
-
-  /* ──────────────────────────────────────────
-     HOW I WORK
-     ────────────────────────────────────────── */
-  section.process {
-    background: var(--paper);
-    padding: 100px 32px 120px;
-    position: relative;
-    z-index: 2;
-  }
-  .process-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .process-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 64px;
-  }
-  .process-step {
-    padding: 36px 28px;
-    border: 1px solid rgba(26,26,26,0.08);
-    border-radius: 12px;
-    transition: border-color 0.3s ease;
-  }
-  .process-step:hover { border-color: var(--signal); }
-  .step-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--signal);
-    letter-spacing: 0.06em;
-    margin-bottom: 20px;
-  }
-  .step-title {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-  .step-desc {
-    font-size: 14px;
-    color: var(--ink-3);
-    line-height: 1.6;
-  }
-  @media (max-width: 768px) {
-    .process-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ──────────────────────────────────────────
-     ABOUT
-     ────────────────────────────────────────── */
-  section.about {
-    background: var(--paper-2);
-    padding: 100px 32px 120px;
-    position: relative;
-    z-index: 2;
-  }
-  .about-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .about-left {}
-  .about-text {
-    font-size: 17px;
-    color: var(--ink-3);
-    line-height: 1.65;
-    margin-top: 36px;
-  }
-  .about-text p + p { margin-top: 20px; }
-  .about-text strong { color: var(--ink); font-weight: 500; }
-  .about-right {}
-  .about-details {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 36px;
-  }
-  .detail-group {}
-  .detail-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--hint);
-    margin-bottom: 8px;
-  }
-  .detail-value {
-    font-size: 15px;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  .detail-value a { color: var(--signal); transition: opacity 0.2s; }
-  .detail-value a:hover { opacity: 0.7; }
-  .tool-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .tool-list span {
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 5px 12px;
-    border: 1px solid rgba(26,26,26,0.1);
-    border-radius: 999px;
-    color: var(--ink-3);
-  }
-  @media (max-width: 768px) {
-    .about-inner { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  /* ──────────────────────────────────────────
-     STORY
-     ────────────────────────────────────────── */
-  section.story {
-    padding: 80px 32px;
-    position: relative;
-    z-index: 2;
-  }
-  .story-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .story-heading {
-    font-family: var(--serif);
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 24px;
-  }
-  .story-content p {
-    font-size: 17px;
-    color: var(--ink-3);
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .story-content p:last-child { margin-bottom: 0; }
-  .story-content strong { color: var(--ink); font-weight: 500; }
-
-  /* ──────────────────────────────────────────
-     COMMUNITY / FAUX
-     ────────────────────────────────────────── */
-  section.community {
-    padding: 80px 32px;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-  }
-  .community-inner {
-    max-width: 1100px;
-    margin: 0 auto 48px;
-  }
-  .community-desc {
-    font-size: 17px;
-    color: var(--ink-3);
-    line-height: 1.7;
-    max-width: 600px;
-    margin-top: 20px;
-  }
-  .faux-collage {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "a a a a b b b b c c c c"
-      ". d d d d e e e e f f .";
-    gap: 16px;
-  }
-  .faux-img {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-  }
-  .faux-img:hover {
-    transform: rotate(0deg) scale(1.03) !important;
-    z-index: 2;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-  }
-  .faux-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    aspect-ratio: 4/3;
-  }
-  @media (max-width: 768px) {
-    .faux-collage {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "a b"
-        "c d"
-        "e f";
-    }
-  }
-
-  /* ──────────────────────────────────────────
-     TESTIMONIALS
-     ────────────────────────────────────────── */
-  section.testimonials {
-    background: var(--ink);
-    padding: 80px 32px;
-    position: relative;
-    z-index: 2;
-  }
-  .testimonials-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .testimonial-card {
-    padding: 36px 32px;
-    border: 1px solid rgba(245,239,228,0.08);
-    border-radius: 12px;
-  }
-  .testimonial-quote {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 500;
-    color: var(--paper);
-    line-height: 1.5;
-    margin-bottom: 24px;
-  }
-  .testimonial-author {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: rgba(245,239,228,0.5);
-    letter-spacing: 0.04em;
-  }
-  .testimonial-author strong { color: var(--paper); font-weight: 500; }
-  @media (max-width: 768px) {
-    .testimonial-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ──────────────────────────────────────────
-     CONTACT
-     ────────────────────────────────────────── */
-  section.contact {
-    background: var(--paper);
-    padding: 100px 32px 120px;
-    position: relative;
-    z-index: 2;
-  }
-  .contact-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .contact-headline {
-    font-family: var(--hero);
-    font-size: clamp(40px, 6vw, 80px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 24px;
-  }
-  .contact-headline em { font-style: normal; color: var(--signal); }
-  .contact-sub {
-    font-size: 17px;
-    color: var(--ink-3);
-    max-width: 480px;
-    margin: 0 auto 44px;
-    line-height: 1.55;
-  }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    padding: 14px 24px;
-    border: 1px solid rgba(26,26,26,0.12);
-    border-radius: 999px;
-    transition: all 0.25s ease;
-  }
-  .contact-link:hover {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-
-  /* ──────────────────────────────────────────
-     FOOTER
-     ────────────────────────────────────────── */
-  footer {
-    background: var(--ink);
-    padding: 32px;
-    position: relative;
-    z-index: 2;
-  }
-  .footer-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-left {
-    font-family: var(--hero);
-    font-size: 18px;
-    font-style: normal;
-    color: var(--paper);
-  }
-  .footer-left .star { color: var(--signal); font-style: normal; }
-  .footer-right {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: rgba(245,239,228,0.65);
-    letter-spacing: 0.04em;
-  }
-  @media (max-width: 600px) {
-    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-  }
-
-  /* ──────────────────────────────────────────
-     SCROLL REVEAL
-     ────────────────────────────────────────── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ──────────────────────────────────────────
-     VISUAL SHOWCASE
-     ────────────────────────────────────────── */
-  section.showcase {
-    padding: 100px 32px 80px;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-  }
-  .showcase-header {
-    max-width: 1280px;
-    margin: 0 auto 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
-  }
-  .showcase-header .section-title { margin-bottom: 0; }
-  .showcase-see-all {
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    padding: 12px 24px;
-    border: 1px solid rgba(26,26,26,0.15);
-    border-radius: 999px;
-    transition: all 0.25s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .showcase-see-all:hover {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-  .showcase-track-wrap {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-  }
-  .showcase-track {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: showcaseScroll 35s linear infinite;
-    will-change: transform;
-  }
-  .showcase-track:hover {
-    animation-play-state: paused;
-  }
-  .showcase-card {
-    flex-shrink: 0;
-    width: 420px;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-    background: var(--ink);
-  }
-  .showcase-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
-  }
-  .showcase-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    aspect-ratio: 4/3;
-  }
-  @keyframes showcaseScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @media (max-width: 768px) {
-    .showcase-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .showcase-card { width: 300px; }
-    section.showcase { padding: 80px 20px 60px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=11">
 </head>
-<body>
-
-<div class="gradient-canvas">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
+<body class="home">
 
 <nav class="top">
-  <div class="logo">Asim</div>
-  <div class="links">
-    <a href="#work" data-hover>Work</a>
-    <a href="#process" data-hover>How I work</a>
-    <a href="#about" data-hover>About</a>
-    <a href="#contact" data-hover>Contact</a>
-    <a href="assets/Asim_CV.pdf" download class="btn-primary" data-hover>
-      Download CV
-    </a>
+  <div class="wrap">
+    <a href="/" class="logo">Asim</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/Asim_CV.pdf" download class="btn btn-dark">Download CV</a>
+    </div>
   </div>
 </nav>
 
-<section class="hero">
-  <h1 class="hero-headline">
-    <span class="line"><span>Hi, I'm Asim</span></span>
-  </h1>
-
-  <p class="hero-sub">
-    I love to take new challenges, thrive in them, and make an <em>everlasting impact</em>.
-  </p>
-
-  <div class="hero-prompt-wrap">
-    <div class="hero-prompt" id="heroPrompt">
-      <input type="text" id="heroInput" placeholder="Ask me anything..." autocomplete="off">
-      <button class="hero-prompt-send" id="heroSend" data-hover aria-label="Send">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-    <div class="hero-response" id="heroResponse"></div>
-    <div class="hero-suggestions" id="heroSuggestions">
-      <button class="hero-suggestion" data-hover data-query="What's your favorite project?"><span class="sug-icon">✦</span> Favorite project</button>
-      <button class="hero-suggestion" data-hover data-query="How do you work?"><span class="sug-icon">⚙</span> How do you work?</button>
-      <button class="hero-suggestion" data-hover data-query="Download CV"><span class="sug-icon">↓</span> Download CV</button>
-      <button class="hero-suggestion" data-hover data-query="Get in touch"><span class="sug-icon">✉</span> Get in touch</button>
+<div class="hero-band">
+<header class="wrap hero">
+  <div class="hero-copy">
+    <h1 class="hero-name">Hi, I'm Asim</h1>
+    <p class="hero-intro">I'm a product designer in London. I work on complex products, mostly trading platforms and B2B tools, and make them simple to use. Four years in, with a master's in computer science behind me.</p>
+    <dl class="hero-facts">
+      <div><dt>Based in</dt><dd>London, open to worldwide roles</dd></div>
+      <div><dt>Education</dt><dd>MSc Computer Science, Anglia Ruskin</dd></div>
+    </dl>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-dark">View case studies <span class="arrow">→</span></a>
+      <a href="about.html" class="btn btn-ghost">More about me</a>
     </div>
   </div>
-</section>
 
+  <div class="hero-stack" aria-label="Featured case studies">
+    <a href="casestudy-mena.html" class="stack-card stack-back">
+      <img src="images/Mena-Thumbnail.png" alt="MENA Capital trading dashboard on a laptop">
+      <div class="stack-cap">
+        <p class="card-company">MENA Capital · <span class="card-metric">0→1</span></p>
+        <p class="card-title">Designing a trading platform from zero</p>
+      </div>
+    </a>
+    <a href="casestudy-saveingold.html" class="stack-card stack-front">
+      <video src="videos/sig-onboarding-thumb.mp4?v=3" poster="images/sig-v2/thumb.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SaveInGold onboarding prototype"></video>
+      <div class="stack-cap">
+        <p class="card-company">SaveInGold · <span class="card-metric">−42% drop-off</span></p>
+        <p class="card-title">Redesigning the SaveInGold trading app</p>
+      </div>
+    </a>
+  </div>
+</header>
+</div>
 
-<!-- SELECTED WORK -->
 <section class="work" id="work">
-  <div class="work-inner">
-    <p class="section-label reveal">◆ my favorite projects</p>
-    <h2 class="section-title reveal">Selected Case <em>Studies</em>.</h2>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="kicker reveal">My favourite projects</p>
+        <h2 class="title reveal">Selected case studies</h2>
+      </div>
+      <p class="reveal">Mostly fintech and B2B SaaS. Each one went from research to release.</p>
+    </div>
 
-    <div class="project-grid">
-
-      <a href="casestudy-saveingold.html" class="project-card reveal" data-hover>
-        <div class="project-thumb">
-          <img src="images/Sig-Thumbnail.png" alt="SaveInGold trading app — welcome, dashboard, and trading screens" loading="lazy">
-          <span class="project-num">01</span>
-          <div class="project-metric">
-            <div class="num">−42%</div>
-            <div class="label">drop-off rate</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-company">SaveInGold</p>
-          <h3 class="project-name">SaveInGold: Redesigning the Gold Trading Experience</h3>
-          <p class="project-hook">Registration sent users to an external browser — 42% dropped off. I redesigned onboarding and rebuilt the trading module from scratch.</p>
-          <div class="project-tags">
-            <span>FinTech</span>
-            <span>Mobile</span>
-            <span>Onboarding</span>
-            <span class="project-arrow">→</span>
-          </div>
+    <div class="work-grid">
+      <a href="casestudy-saveingold.html" class="case case--feature reveal">
+        <div class="case-media"><video src="videos/sig-onboarding-thumb.mp4?v=3" poster="videos/sig-onboarding-thumb-poster.jpg?v=3" autoplay muted loop playsinline preload="metadata" aria-label="SaveInGold onboarding prototype"></video></div>
+        <div class="case-body">
+          <div class="case-top"><span>SaveInGold</span><span class="case-metric">−42% drop-off</span></div>
+          <h3 class="case-title">Redesigning the SaveInGold trading app</h3>
+          <p class="case-hook">Registration sent users out to an external browser, and 42% of them never came back. I moved onboarding into the app and rebuilt the trading module from scratch.</p>
+          <div class="case-foot"><span>FinTech · Mobile · Onboarding</span><span class="go">Read case study →</span></div>
         </div>
       </a>
 
-      <a href="casestudy-mena.html" class="project-card reveal" data-hover>
-        <div class="project-thumb mena-placeholder">
-          <img src="images/Mena-Thumbnail.png" alt="Mena Capital Thumbnail" loading="lazy">
-          <span class="project-num">02</span>
-          <div class="project-metric">
-            <div class="num">0→1</div>
-            <div class="label">shipped from scratch</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-company">MENA Capital</p>
-          <h3 class="project-name">Designing a trading platform from zero</h3>
-          <p class="project-hook">Sole designer on a 0-to-1 fintech build. Owned every product decision from user flows and design system to usability testing, scoring 94% task completion before a single line of code.</p>
-          <div class="project-tags">
-            <span>FinTech</span>
-            <span>0→1</span>
-            <span>Design System</span>
-            <span class="project-arrow">→</span>
-          </div>
+      <a href="casestudy-mena.html" class="case reveal">
+        <div class="case-media"><img src="images/Mena-Thumbnail.png" alt="MENA Capital trading platform dashboard" loading="lazy"></div>
+        <div class="case-body">
+          <div class="case-top"><span>MENA Capital</span><span class="case-metric">94% task completion</span></div>
+          <h3 class="case-title">Designing a trading platform from zero</h3>
+          <p class="case-hook">Sole designer on a 0-to-1 fintech build. I owned the user flows, the design system and usability testing, and hit 94% task completion before a line of code was written.</p>
+          <div class="case-foot"><span>FinTech · 0→1 · Web</span><span class="go">Read case study →</span></div>
         </div>
       </a>
 
-      <a href="casestudy-mena-ds.html" class="project-card reveal" data-hover>
-        <div class="project-thumb">
-          <img src="images/mena-ds-ramps.png" alt="MENA Capital Design System — colour shade ramps for Green, Blue, and Violet" loading="lazy">
-          <span class="project-num">03</span>
-          <div class="project-metric">
-            <div class="num">3x</div>
-            <div class="label">faster delivery</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-company">MENA Capital</p>
-          <h3 class="project-name">Building a Design System from Scratch</h3>
-          <p class="project-hook">Built the token architecture, component library, and documentation that let the team ship screens 3x faster — with zero design-dev back-and-forth.</p>
-          <div class="project-tags">
-            <span>Design System</span>
-            <span>Tokens</span>
-            <span>Components</span>
-            <span class="project-arrow">→</span>
-          </div>
+      <a href="casestudy-mena-ds.html" class="case reveal">
+        <div class="case-media"><img src="images/mena-ds-ramps.png" alt="MENA Capital design system colour ramps" loading="lazy"></div>
+        <div class="case-body">
+          <div class="case-top"><span>MENA Capital</span><span class="case-metric">3x faster delivery</span></div>
+          <h3 class="case-title">Building MENA Capital's design system</h3>
+          <p class="case-hook">Tokens, components and documentation that let the team ship screens three times faster, with no design-to-dev back-and-forth.</p>
+          <div class="case-foot"><span>Design system · Tokens</span><span class="go">Read case study →</span></div>
         </div>
       </a>
 
-      <a href="casestudy-socialpro.html" class="project-card reveal" data-hover>
-        <div class="project-thumb">
-          <img src="images/socialpro-dashboard.png" alt="SocialPro reporting dashboard showing project metrics, workforce data, and organisation metrics on a laptop" loading="lazy">
-          <span class="project-num">04</span>
-          <div class="project-metric">
-            <div class="num">+22%</div>
-            <div class="label">report submissions</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-company">SocialPro</p>
-          <h3 class="project-name">SocialPro: Streamlining Social Procurement, driving a 22% increase in report submissions</h3>
-          <p class="project-hook">Contractors managing $10B+ in projects were drowning in compliance reports. I redesigned the entire reporting module — submission time dropped 30%.</p>
-          <div class="project-tags">
-            <span>SaaS</span>
-            <span>Enterprise</span>
-            <span>Data-heavy UI</span>
-            <span class="project-arrow">→</span>
-          </div>
+      <a href="casestudy-socialpro.html" class="case reveal">
+        <div class="case-media"><img src="images/socialpro-dashboard.png" alt="SocialPro reporting dashboard on a laptop" loading="lazy"></div>
+        <div class="case-body">
+          <div class="case-top"><span>SocialPro</span><span class="case-metric">+22% submissions</span></div>
+          <h3 class="case-title">Streamlining compliance reporting at SocialPro</h3>
+          <p class="case-hook">Contractors managing $10B+ in projects were buried in compliance reports. I redesigned the reporting module: submission time fell 30% and submissions rose 22%.</p>
+          <div class="case-foot"><span>SaaS · Enterprise · Data-heavy UI</span><span class="go">Read case study →</span></div>
         </div>
       </a>
 
-      <a href="casestudy-socialpro-web.html" class="project-card reveal" data-hover>
-        <div class="project-thumb">
-          <img src="images/socialpro-web.png" alt="SocialPro website redesign showing hero section, trusted company logos, and streamlined data collection messaging" loading="lazy">
-          <span class="project-num">05</span>
-          <div class="project-metric">
-            <div class="num">+13%</div>
-            <div class="label">conversion rate</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <p class="project-company">SocialPro</p>
-          <h3 class="project-name">SocialPro - Redesigning for Clarity & Conversion in B2B Experience</h3>
-          <p class="project-hook">The marketing site had hidden CTAs and generic illustrations. I replaced both with real product screenshots and clear conversion paths — demo requests jumped 13%.</p>
-          <div class="project-tags">
-            <span>B2B SaaS</span>
-            <span>Conversion</span>
-            <span>Design System</span>
-            <span class="project-arrow">→</span>
-          </div>
+      <a href="casestudy-socialpro-web.html" class="case reveal">
+        <div class="case-media"><img src="images/socialpro-web.png" alt="SocialPro marketing website redesign" loading="lazy"></div>
+        <div class="case-body">
+          <div class="case-top"><span>SocialPro</span><span class="case-metric">+13% demo requests</span></div>
+          <h3 class="case-title">Redesigning SocialPro's website for conversion</h3>
+          <p class="case-hook">The site hid its own demo button behind generic illustrations. I swapped them for real product screens and clear calls to action, and demo requests rose 13%.</p>
+          <div class="case-foot"><span>B2B SaaS · Marketing site</span><span class="go">Read case study →</span></div>
         </div>
       </a>
-
-
     </div>
   </div>
 </section>
 
-
-<!-- VISUAL SHOWCASE -->
 <section class="showcase" id="showcase">
-  <div class="showcase-header">
+  <div class="wrap section-head">
     <div>
-      <p class="section-label reveal">◆ visual range</p>
-      <h2 class="section-title reveal">Not just flows and frameworks. <br>I make things <em>look good</em> too.</h2>
+      <p class="kicker reveal">Visual work</p>
+      <h2 class="title reveal">Shots and side projects</h2>
     </div>
-    <a href="gallery.html" class="showcase-see-all reveal" data-hover>See all work ↗</a>
+    <a href="gallery.html" class="text-link reveal">Open the gallery →</a>
   </div>
   <div class="showcase-track-wrap">
     <div class="showcase-track">
-      <div class="showcase-card"><img src="images/showcase/dribbble-farmhub.png" alt="Farmhub — farm-to-table mobile app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-macho.jpg" alt="Macho — restaurant discovery app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture — e-commerce app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-34036092.png" alt="Cryptade — crypto trading platform" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum — AR museum guide app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant — productivity web app" loading="lazy"></div>
-      <!-- duplicate set for seamless loop -->
-      <div class="showcase-card"><img src="images/showcase/dribbble-farmhub.png" alt="Farmhub — farm-to-table mobile app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-macho.jpg" alt="Macho — restaurant discovery app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture — e-commerce app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-34036092.png" alt="Cryptade — crypto trading platform" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum — AR museum guide app" loading="lazy"></div>
-      <div class="showcase-card"><img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant — productivity web app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-farmhub.png" alt="Farmhub farm-to-table mobile app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-macho.jpg" alt="Macho restaurant discovery app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-good-furniture.png" alt="Good Furniture e-commerce app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34036092.png" alt="Cryptade crypto trading platform" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-34787674.jpg" alt="Art Museum AR guide app" loading="lazy"></div>
+      <div class="showcase-card"><img src="images/showcase/dribbble-e-assistant.png" alt="My e-Assistant productivity web app" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-farmhub.png" alt="" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-macho.jpg" alt="" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-good-furniture.png" alt="" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-34036092.png" alt="" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-34787674.jpg" alt="" loading="lazy"></div>
+      <div class="showcase-card" aria-hidden="true"><img src="images/showcase/dribbble-e-assistant.png" alt="" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<!-- HOW I WORK -->
-<section class="process" id="process">
-  <div class="process-inner">
-    <p class="section-label reveal">◆ how i work</p>
-    <h2 class="section-title reveal">No fluff. Just the <em>right things</em> in the right order.</h2>
-
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <p class="step-num">01 — UNDERSTAND</p>
-        <h3 class="step-title">Talk to real people first</h3>
-        <p class="step-desc">I start with user interviews and stakeholder sessions — not assumptions. I want to know what's broken, what's confusing, and what keeps people up at night before I open Figma.</p>
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="kicker reveal">Testimonials</p>
+        <h2 class="title reveal">Kind words</h2>
       </div>
-      <div class="process-step reveal">
-        <p class="step-num">02 — EXPLORE</p>
-        <h3 class="step-title">Sketch fast, decide slow</h3>
-        <p class="step-desc">Low-fi wireframes and flows first. I explore multiple directions, share early, and kill ideas that don't survive scrutiny. The best solution is rarely the first one.</p>
-      </div>
-      <div class="process-step reveal">
-        <p class="step-num">03 — SHIP</p>
-        <h3 class="step-title">Design for production, not applause</h3>
-        <p class="step-desc">High-fidelity screens, component systems, and specs that engineers can build. I stay in the room through development — the work isn't done until it's live and measured.</p>
-      </div>
+    </div>
+    <div class="quotes quotes--three">
+      <figure class="quote reveal">
+        <blockquote>"Asim transformed our app from a confusing, fragmented experience into something our users actually trust with their money."</blockquote>
+        <cite><strong>Amro Jabar</strong>, COO, SaveInGold</cite>
+      </figure>
+      <figure class="quote reveal">
+        <blockquote>"From day one, Asim brought a sharp eye for detail, creativity, and a genuine commitment to building user-friendly experiences. I'd recommend him to any organisation looking for a thoughtful and dependable designer."</blockquote>
+        <cite><strong>Taylor Jenkins</strong>, Co-Founder, SocialPro</cite>
+      </figure>
+      <figure class="quote reveal">
+        <blockquote>"Asim has extensive experience in designing products with pixel-perfect, user-friendly experiences that make any product unique and compelling in the market. He's highly recommended for all kinds of digital product design."</blockquote>
+        <cite><strong>Mr. Tayyab Mughal</strong>, AI Agentic Engineer &amp; Technical Consultant</cite>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-left">
-      <p class="section-label reveal">◆ about</p>
-      <h2 class="section-title reveal">The short version.</h2>
-      <div class="about-text reveal">
-        <p>I'm Asim — a product designer based in London with a Master's in Computer Science from Anglia Ruskin (distinction, thesis on generative AI). The CS background means I think in systems, not just screens.</p>
-        <p>Over four years I've shipped products across <strong>FinTech, HealthTech, EdTech, social procurement, and consumer services.</strong> The industry changes — the challenge doesn't: take something complex, make it feel obvious, ship it, measure it.</p>
-        <p>Currently I'm the product designer at <strong>MENA Capital</strong>, building their trading platform from zero. Before that: SaveInGold (gold trading), SocialPro (social procurement), and WPBrigade (WordPress ecosystem).</p>
-      </div>
-    </div>
-    <div class="about-right">
-      <div class="about-details">
-        <div class="detail-group reveal">
-          <p class="detail-label">Location</p>
-          <p class="detail-value">London, UK — open to worldwide roles<br>UK sponsorship required after February 2027</br></p>
-        </div>
-        <div class="detail-group reveal">
-          <p class="detail-label">Education</p>
-          <p class="detail-value">MSc Computer Science · Anglia Ruskin · 2024<br>BSc Computer Science · Univ. of Gujrat · 2021</p>
-        </div>
-        <div class="detail-group reveal">
-          <p class="detail-label">Toolkit</p>
-          <div class="tool-list">
-            <span>Figma</span>
-            <span>Framer</span>
-            <span>Miro</span>
-            <span>Notion</span>
-            <span>HTML/CSS</span>
-            <span>Cursor</span>
-            <span>Claude</span>
-          </div>
-        </div>
-        <div class="detail-group reveal">
-          <p class="detail-label">CV</p>
-          <p class="detail-value"><a href="assets/Asim_CV.pdf" download data-hover>Download résumé ↓</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story">
-  <div class="story-inner">
-    <p class="section-label reveal">◆ a moment I'm proud of</p>
-    <div class="story-content reveal">
-      <h2 class="story-heading">In 2021, I walked into my first design role and found the team designing in Photoshop.</h2>
-      <p>PSDs everywhere. Flat files passed between designers and developers with no shared source of truth. Figma was already well established in the industry, but the company hadn't made the switch.</p>
-      <p>I didn't just suggest Figma. I got the stakeholders on board by showing them how much faster and more collaborative the workflow could be for designing UIs, building components, and handing off to engineering. Then I did the hard part: migrating every existing PSD into Figma, file by file, and onboarding the entire team onto a new way of working.</p>
-      <p>By the time I left WPBrigade three years later, Photoshop was gone from the design workflow entirely. The team was working in a proper design system with tokens, variants, and auto layout. Handoff time had dropped 40%.</p>
-      <p>It taught me something I still carry: <strong>the best design work isn't always on screen. Sometimes it's changing how a team works.</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- COMMUNITY -->
-<section class="community" id="community">
-  <div class="community-inner">
-    <p class="section-label reveal">◆ community</p>
-    <h2 class="section-title reveal">I help bring London's <br> <strong>designers</strong> <em>together.</em></h2>
-    <p class="community-desc reveal">As a co-partner at FAUX, I help organise monthly meetups for designers across London — finding venues, bringing people in, and keeping the energy going. Between events, I'm planning with my co-partners on how to grow the community — running side quests, experimenting with new formats, and finding ways to get more designers through the door. It's how I stay connected and give back to the people I learn from.</p>
-  </div>
-  <div class="faux-collage reveal">
-    <div class="faux-img" style="grid-area: a; transform: rotate(-3deg);"><img src="images/faux-1.jpg" alt="FAUX community meetup" loading="lazy"></div>
-    <div class="faux-img" style="grid-area: b; transform: rotate(2deg);"><img src="images/faux2.jpg" alt="FAUX community group photo" loading="lazy"></div>
-    <div class="faux-img" style="grid-area: c; transform: rotate(-1.5deg);"><img src="images/faux3.jpg" alt="FAUX community friends" loading="lazy"></div>
-    <div class="faux-img" style="grid-area: d; transform: rotate(3deg);"><img src="images/faux7.jpg" alt="FAUX community dinner" loading="lazy"></div>
-    <div class="faux-img" style="grid-area: e; transform: rotate(-2deg);"><img src="images/faux5.jpg" alt="FAUX community event" loading="lazy"></div>
-    <div class="faux-img" style="grid-area: f; transform: rotate(1.5deg);"><img src="images/faux6.jpg" alt="FAUX community gathering" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <p class="section-label reveal" style="color: rgba(245,239,228,0.65);">◆ kind words</p>
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal">
-        <p class="testimonial-quote">"From day one, Asim brought a sharp eye for detail, creativity, and a genuine commitment to building user-friendly experiences. I'd recommend him to any organisation looking for a thoughtful and dependable designer."</p>
-        <p class="testimonial-author"><strong>Taylor Jenkins</strong> · Co-Founder, SocialPro</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <p class="testimonial-quote">"Asim has extensive experience in designing products with pixel-perfect, user-friendly experiences that make any product unique and compelling in the market. He's highly recommended for all kinds of digital product design."</p>
-        <p class="testimonial-author"><strong>Mr. Tayyab Mughal</strong> · AI Agentic Engineer & Technical Consultant</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="contact-inner">
-    <p class="section-label reveal">◆ get in touch</p>
-    <h2 class="contact-headline reveal">Let's build something<br><em>worth shipping</em>.</h2>
-    <p class="contact-sub reveal">Available for product design roles, contract work, and interesting problems. London-based, open to worldwide roles. UK sponsorship required after February 2027.</p>
-    <div class="contact-links reveal">
-      <a href="mailto:asimqamar142@gmail.com" class="contact-link" data-hover>asimqamar142@gmail.com</a>
-      <a href="https://www.linkedin.com/in/asim-qamar-javed/" class="contact-link" data-hover>LinkedIn ↗</a>
-      <a href="https://open.spotify.com/user/2jjrcnjixiwjhzdzpjf8iryct?si=A2sPSEwnTZGNGMY-ojyaQA" class="contact-link" data-hover>Spotify ↗</a>
-      <a href="tel:+447466662330" class="contact-link" data-hover>+44 746 666 2330</a>
+  <div class="wrap contact-grid">
+    <div>
+      <p class="kicker reveal">Contact</p>
+      <h2 class="title reveal">Get in touch</h2>
+      <p class="contact-sub reveal">I'm open to product design roles in London or remote, and to contract work. I'll need UK visa sponsorship from February 2027.</p>
+    </div>
+    <div class="reveal">
+      <a href="mailto:asimqamar142@gmail.com" class="contact-email">asimqamar142@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/asim-qamar-javed/">LinkedIn ↗</a>
+        <a href="https://open.spotify.com/user/2jjrcnjixiwjhzdzpjf8iryct?si=A2sPSEwnTZGNGMY-ojyaQA">Spotify ↗</a>
+        <a href="tel:+447466662330">+44 746 666 2330</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-left">Asim</div>
-    <div class="footer-right">designed & built by hand · london · 2026</div>
+  <div class="wrap">
+    <span>© 2026 Asim</span>
+    <span>London, UK</span>
   </div>
 </footer>
 
-<script>
-  // TICKER
-  (function() {
-    const items = document.querySelectorAll('.ticker-text span');
-    if (items.length === 0) return;
-    let current = 0;
-    setInterval(() => {
-      const currentItem = items[current];
-      const next = (current + 1) % items.length;
-      const nextItem = items[next];
-      currentItem.classList.remove('active');
-      currentItem.classList.add('exit');
-      setTimeout(() => currentItem.classList.remove('exit'), 500);
-      nextItem.classList.add('active');
-      current = next;
-    }, 3500);
-  })();
-
-  // SCROLL REVEAL
-  (function() {
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-  })();
-
-  // CTA BUTTONS
-  (function() {
-    const primary = document.querySelector('.btn-primary:not([download])');
-    const secondary = document.querySelector('.btn-secondary');
-    if (primary) primary.addEventListener('click', () => {
-      document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
-    });
-    if (secondary) secondary.addEventListener('click', () => {
-      document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
-    });
-  })();
-
-  // PROMPT BAR
-  (function() {
-    const input = document.getElementById('heroInput');
-    const sendBtn = document.getElementById('heroSend');
-    const prompt = document.getElementById('heroPrompt');
-    const responseEl = document.getElementById('heroResponse');
-    const suggestions = document.getElementById('heroSuggestions');
-    if (!input || !sendBtn) return;
-
-    const responses = [
-      {
-        keywords: ['how do you work', 'process', 'approach', 'method', 'workflow'],
-        text: "Research first — I talk to real users before touching Figma. Then I explore fast, using AI tools like Claude and Make for rapid ideation and automating repetitive tasks. I sketch multiple directions, prototype the strongest, and stay in the room through development until it's live and measured.",
-        action: { label: 'See my process ↓', target: '#process' }
-      },
-      {
-        keywords: ['best work', 'projects', 'portfolio', 'case stud'],
-        text: "Five shipped projects — from a $10B social procurement platform to a gold trading app. Each one solved real problems with measurable outcomes.",
-        action: { label: 'See the work ↓', target: '#work' }
-      },
-      {
-        keywords: ['cv', 'resume', 'résumé', 'download'],
-        text: "Here you go — my CV covers 4+ years of product design across FinTech, HealthTech, EdTech, social procurement, and consumer services.",
-        action: { label: 'Download CV ↓', target: 'assets/Asim_CV.pdf', download: true }
-      },
-      {
-        keywords: ['contact', 'touch', 'email', 'hire', 'reach', 'available'],
-        text: "I'm always up for a good conversation — especially about complex problems that need untangling. Drop me a line.",
-        action: { label: 'Get in touch ↓', target: '#contact' }
-      },
-      {
-        keywords: ['who', 'about', 'yourself', 'tell me', 'background', 'asim'],
-        text: "I'm Asim — senior product designer in London with an MSc in Computer Science. I've shipped products across FinTech, HealthTech, EdTech, social procurement, and consumer services. The diverse industry experience is a strength — I bring cross-domain thinking to every problem.",
-        action: { label: 'More about me ↓', target: '#about' }
-      },
-      {
-        keywords: ['tool', 'figma', 'stack', 'software', 'design tool'],
-        text: "Figma for design, Framer for prototyping, Miro for workshopping, and I'm comfortable in HTML/CSS when I need to be. I also use Cursor and Claude for speeding up my workflow.",
-        action: { label: 'See full toolkit ↓', target: '#about' }
-      },
-      {
-        keywords: ['experience', 'years', 'career', 'companies', 'worked'],
-        text: "4+ years shipping product across FinTech, HealthTech, EdTech, social procurement, and consumer services. Currently the senior product designer at MENA Capital building their trading platform from zero. Before that: SocialPro, SaveInGold, and WPBrigade.",
-        action: { label: 'See my work ↓', target: '#work' }
-      },
-      {
-        keywords: ['fintech', 'finance', 'trading', 'mena', 'gold'],
-        text: "I've designed a client-facing CRM for a MENA-region brokerage and a gold trading app that cut drop-off by 42%. From FinTech to HealthTech to EdTech — complex industries are where I do my best work.",
-        action: { label: 'View FinTech projects ↓', target: '#work' }
-      },
-      {
-        keywords: ['favorite', 'favourite', 'best project', 'proud'],
-        text: "SaveInGold — a UAE-based gold trading app. Users were dropping off because registration pushed them to an external browser, killing trust. I brought the entire flow in-app, redesigned onboarding from scratch, and built a new trading module. Registration drop-off fell 42%, and the app went from feeling fragmented to something users actually trusted with their money.",
-        action: { label: 'Read the case study →', target: 'casestudy-saveingold.html' }
-      },
-      {
-        keywords: ['socialpro', 'procurement', 'reporting', 'compliance'],
-        text: "At SocialPro I redesigned the entire reporting module for contractors managing $10B+ in projects. Submission time dropped 30% and report completions rose 22%.",
-        action: { label: 'Read the case study ↓', target: 'casestudy-socialpro.html' }
-      },
-      {
-        keywords: ['education', 'degree', 'university', 'master', 'msc', 'study', 'studied', 'college', 'school', 'qualification'],
-        text: "I have an MSc in Computer Science from Anglia Ruskin University (distinction) — my thesis explored generative AI in design workflows. Before that, a BSc in Computer Science from the University of Gujrat. The CS background gives me a systems-thinking edge that most designers don't have.",
-        action: { label: 'More about me ↓', target: '#about' }
-      }
-    ];
-
-    const fallback = {
-      text: "Good question — I might not have a pre-loaded answer for that, but I'd love to chat about it. Check out my work below or drop me a message.",
-      action: { label: 'Get in touch ↓', target: '#contact' }
-    };
-
-    function findResponse(query) {
-      const q = query.toLowerCase();
-      for (const r of responses) {
-        if (r.keywords.some(k => q.includes(k))) return r;
-      }
-      return fallback;
-    }
-
-    let typing = false;
-
-    function typeText(el, text, typingId, cb) {
-      let i = 0;
-      const cursor = document.createElement('span');
-      cursor.className = 'response-cursor';
-      el.textContent = '';
-      el.appendChild(cursor);
-      const speed = 18;
-      function tick() {
-        if (typingId !== currentTypingId) return; // cancelled
-        if (i < text.length) {
-          cursor.before(text[i]);
-          i++;
-          setTimeout(tick, speed + Math.random() * 12);
-        } else {
-          cursor.remove();
-          if (cb) cb();
-        }
-      }
-      tick();
-    }
-
-    let currentTypingId = 0;
-
-    function showResponse(query) {
-      // Cancel any in-progress typing
-      currentTypingId++;
-      const thisId = currentTypingId;
-      typing = true;
-      const match = findResponse(query);
-
-      responseEl.innerHTML = '<div class="hero-response-inner"><span class="response-text"></span></div>';
-      const inner = responseEl.querySelector('.hero-response-inner');
-      const textEl = responseEl.querySelector('.response-text');
-
-      requestAnimationFrame(() => {
-        inner.classList.add('visible');
-        typeText(textEl, match.text, thisId, () => {
-          if (thisId !== currentTypingId) return;
-          if (match.action) {
-            const btn = document.createElement('a');
-            btn.className = 'response-action';
-            btn.textContent = match.action.label;
-            if (match.action.download) {
-              btn.href = match.action.target;
-              btn.setAttribute('download', '');
-            } else if (match.action.target.startsWith('#')) {
-              btn.href = match.action.target;
-              btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.querySelector(match.action.target).scrollIntoView({ behavior: 'smooth' });
-              });
-            } else {
-              btn.href = match.action.target;
-            }
-            inner.appendChild(document.createElement('br'));
-            inner.appendChild(btn);
-            requestAnimationFrame(() => btn.classList.add('visible'));
-          }
-          typing = false;
-        });
-      });
-    }
-
-    function handleSubmit() {
-      const query = input.value.trim();
-      if (!query && !typing) return;
-      showResponse(query);
-      input.value = '';
-    }
-
-    sendBtn.addEventListener('click', handleSubmit);
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleSubmit();
-    });
-
-    document.querySelectorAll('.hero-suggestion').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const query = btn.dataset.query;
-        input.value = query;
-        showResponse(query);
-        setTimeout(() => { input.value = ''; }, 300);
-      });
-    });
-  })();
-</script>
-
+<script src="site.js?v=2"></script>
 </body>
 </html>
