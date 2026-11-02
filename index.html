@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=11">
+<link rel="stylesheet" href="site.css?v=24">
 </head>
 <body class="home">
 
@@ -41,39 +41,57 @@
   </div>
 </nav>
 
-<div class="hero-band">
-<header class="wrap hero">
-  <div class="hero-copy">
-    <h1 class="hero-name">Hi, I'm Asim</h1>
-    <p class="hero-intro">I'm a product designer in London. I work on complex products, mostly trading platforms and B2B tools, and make them simple to use. Four years in, with a master's in computer science behind me.</p>
-    <dl class="hero-facts">
-      <div><dt>Based in</dt><dd>London, open to worldwide roles</dd></div>
-      <div><dt>Education</dt><dd>MSc Computer Science, Anglia Ruskin</dd></div>
-    </dl>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-dark">View case studies <span class="arrow">→</span></a>
-      <a href="about.html" class="btn btn-ghost">More about me</a>
-    </div>
+<section class="hx" id="hero">
+  <div class="hx-bg" aria-hidden="true">
+    <div class="hx-floor-wide"></div><div class="hx-haze"></div><div class="hx-floor"></div><div class="hx-beam"></div>
+    <div class="hx-lines-dark"></div><div class="hx-lines"></div><div class="hx-vignette"></div>
   </div>
 
-  <div class="hero-stack" aria-label="Featured case studies">
-    <a href="casestudy-mena.html" class="stack-card stack-back">
-      <img src="images/Mena-Thumbnail.png" alt="MENA Capital trading dashboard on a laptop">
-      <div class="stack-cap">
-        <p class="card-company">MENA Capital · <span class="card-metric">0→1</span></p>
-        <p class="card-title">Designing a trading platform from zero</p>
-      </div>
-    </a>
-    <a href="casestudy-saveingold.html" class="stack-card stack-front">
-      <img src="images/sig-v2/thumb.jpg" alt="SaveInGold onboarding screens">
-      <div class="stack-cap">
-        <p class="card-company">SaveInGold · <span class="card-metric">−42% drop-off</span></p>
-        <p class="card-title">Redesigning the SaveInGold trading app</p>
+  <div class="hx-stage">
+    <div class="hx-stats" aria-hidden="true">
+      <ul>
+        <li><b>4+ yrs</b><span>Designing products</span></li>
+        <li><b>−42%</b><span>Onboarding drop-off</span></li>
+      </ul>
+      <ul class="right">
+        <li><b>+35%</b><span>User retention</span></li>
+        <li><b>+22%</b><span>Feature adoption</span></li>
+      </ul>
+    </div>
+
+    <div class="hx-copy">
+      <p class="hx-kicker">Product designer in London, open to roles</p>
+      <h1 class="hx-title">Hi, I'm Asim.<br><span>I make AI actually useful.</span></h1>
+      <p class="hx-intro">Four years of making hard products feel easy, in fintech, SaaS, health and education. My prototypes are working code now, built with AI and in front of real people within days.</p>
+    </div>
+
+    <a class="hx-pop" id="hx-pop" href="#" tabindex="-1" aria-hidden="true">
+      <div class="hx-pop-media"><img src="images/sig-v2/thumb.jpg" alt=""><div class="hx-shine"></div></div>
+      <div class="hx-pop-bar">
+        <div>
+          <p class="hx-pop-meta"><span data-pop="co"></span> · <b data-pop="metric"></b></p>
+          <p class="hx-pop-title" data-pop="title"></p>
+        </div>
+        <span class="hx-pop-go">Read case study</span>
       </div>
     </a>
   </div>
-</header>
-</div>
+
+  <div class="hx-tray" aria-label="Featured case studies">
+    <a class="hx-card" href="casestudy-saveingold.html" data-co="SaveInGold" data-metric="−42% drop-off" data-title="Moving sign-up in-app cut drop-off by 42%">
+      <p class="hx-label">SaveInGold <em>Mobile</em></p>
+      <div class="hx-media"><img src="images/sig-v2/thumb.jpg" alt="SaveInGold onboarding screens"></div>
+    </a>
+    <a class="hx-card" href="casestudy-mena.html" data-co="MENA Capital" data-metric="94% task completion" data-title="Designing a trading platform from zero">
+      <p class="hx-label">MENA Capital <em>Web app</em></p>
+      <div class="hx-media"><img src="images/Mena-Thumbnail.png" alt="MENA Capital trading dashboard"></div>
+    </a>
+    <a class="hx-card" href="casestudy-socialpro.html" data-co="SocialPro" data-metric="+22% submissions" data-title="Streamlining compliance reporting at SocialPro">
+      <p class="hx-label">SocialPro <em>B2B SaaS</em></p>
+      <div class="hx-media"><img src="images/socialpro-dashboard.png" alt="SocialPro reporting dashboard"></div>
+    </a>
+  </div>
+</section>
 
 <section class="work" id="work">
   <div class="wrap">
@@ -89,8 +107,8 @@
         <div class="case-media"><video src="videos/sig-onboarding-thumb.mp4?v=3" poster="videos/sig-onboarding-thumb-poster.jpg?v=3" autoplay muted loop playsinline preload="metadata" aria-label="SaveInGold onboarding prototype"></video></div>
         <div class="case-body">
           <div class="case-top"><span>SaveInGold</span><span class="case-metric">−42% drop-off</span></div>
-          <h3 class="case-title">Redesigning the SaveInGold trading app</h3>
-          <p class="case-hook">Registration sent users out to an external browser, and 42% of them never came back. I moved onboarding into the app and rebuilt the trading module from scratch.</p>
+          <h3 class="case-title">Moving sign-up in-app cut drop-off by 42%</h3>
+          <p class="case-hook">Tapping Register used to throw people out to a third-party KYC website, and 42% never came back. I brought sign-up and identity checks inside the app, within UAE rules for gold dealers.</p>
           <div class="case-foot"><span>FinTech · Mobile · Onboarding</span><span class="go">Read case study →</span></div>
         </div>
       </a>
@@ -189,6 +207,7 @@
   </div>
 </section>
 
+<div class="site-end">
 <section class="contact" id="contact">
   <div class="wrap contact-grid">
     <div>
@@ -213,7 +232,8 @@
     <span>London, UK</span>
   </div>
 </footer>
+</div>
 
-<script src="site.js?v=2"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>
