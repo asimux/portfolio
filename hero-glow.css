@@ -50,3 +50,8 @@ nav.top {
 nav.top .logo, nav.top .back { color: #F2F2EF; }
 nav.top .back:hover { color: #fff; }
 @media (max-width: 768px) { nav.top { left: 20px; right: 20px; padding: 0 20px; } }
+
+/* metrics band: light strip between the dark hero and dark sections */
+.cs-outcome { background: #F4F1EA; border: 0; }
+.cs-outcome .outcome-num { color: #1D332E; }
+.cs-outcome .outcome-label { color: #4A4A46; }
