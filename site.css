@@ -422,7 +422,7 @@ section.contact, footer { background: #1D332E; }
 footer .wrap { border-top-color: rgba(242, 242, 239, 0.14); }
 
 /* SECTION HEADINGS: Plus Jakarta Sans (Acorn stays on logo, hero and footer) */
-h2.title { font-family: var(--sans); font-weight: 600; letter-spacing: -0.025em; line-height: 1.08; }
+h2.title { font-family: var(--sans); font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; }
 .stack-card video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 11px; background: var(--dark); }
 
 /* ===== HOME HERO: light beam, case study tray, pop-up preview ===== */
@@ -480,7 +480,7 @@ body.home nav.top:not(.scrolled) { background: transparent; backdrop-filter: non
 @keyframes hx-pulse { 50% { box-shadow: 0 0 0 7px rgba(var(--acc), 0); } }
 .hx-copy::before { content: ""; position: absolute; inset: -40px -80px; z-index: -1; pointer-events: none; background: radial-gradient(closest-side, rgba(14, 26, 22, 0.55), rgba(14, 26, 22, 0)); }
 .hx-title { font-family: var(--display); font-weight: 700; font-size: clamp(42px, 5.8vw, 84px); line-height: 0.98; letter-spacing: -0.03em; }
-.hx-title span { color: rgb(var(--acc)); }
+.hx-title span { color: rgb(var(--acc)); font-family: var(--sans); font-weight: 500; letter-spacing: -0.035em; }
 .hx-intro { margin: 24px auto 0; max-width: 34em; font-size: 18px; font-weight: 500; line-height: 1.6; color: #F2F2EF; text-shadow: 0 1px 2px rgba(10, 20, 17, 0.6), 0 0 24px rgba(10, 20, 17, 0.9); }
 
 
